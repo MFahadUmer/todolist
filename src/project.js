@@ -5,9 +5,15 @@ const project = (() => {
     priority: 'priority',
     notes: 'notes',
     checklist: false,
-    dueDate: 'duedate'
-  }
-  return toDoItems;
+    dueDate: 'duedate',
+    add: (title, description, priority) => {
+      toDoItems.title = title;
+      toDoItems.description = "description";
+      toDoItems.priority = "priority";
+    }
+  };
+
+  return {toDoItems};
 })();
 
-export default 'project'
+export default project;
