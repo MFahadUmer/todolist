@@ -1,7 +1,10 @@
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import './style.css';
 import tasks from "./task";
 import addAndDisplay from "./storage";
 import project from "./project";
+import navModule from './nav'
 
 let newTask = tasks
 newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
