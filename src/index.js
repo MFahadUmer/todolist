@@ -1,16 +1,16 @@
 import './style.css';
-import { project } from './project';
+import tasks from "./task";
+import addAndDisplay from "./storage";
+import project from "./project";
 
-const myToDoList = localStorage.getItem('todo')
-  ? JSON.parse(localStorage.getItem('todo'))
-  : [];
+let newTask = tasks
+newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
+let newTaskArray = newTask.addTasks();
+let addAndDisplayTaskArray = addAndDisplay;
+addAndDisplayTaskArray.addDisplaytasks(newTaskArray);
 
-localStorage.setItem('todo', JSON.stringify(myToDoList));
-JSON.parse(localStorage.getItem('todo'));
-
-let newProject = project
-newProject.toDoItems("John", "Doe", 50, "blue", "jeez", 'sgdffd')
-// var newProject = new toDoItems("John", "Doe", 50, "blue", "jeez", 'sgdffd')
-console.log(newProject)
-myToDoList.push(newProject);
-console.log(myToDoList)
+let newProject = project;
+newProject.projects("TO DO LIST");
+let newProjectArray = newProject.addProject();
+let addAndDisplayProjectArray = addAndDisplay;
+addAndDisplayProjectArray.addDisplayproject(newProjectArray);
