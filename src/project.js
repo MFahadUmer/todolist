@@ -1,19 +1,12 @@
+
 const project = (() => {
-  let toDoItems = {
-    title: 'title',
-    description: 'description', 
-    priority: 'priority',
-    notes: 'notes',
-    checklist: false,
-    dueDate: 'duedate',
-    add: (title, description, priority) => {
-      toDoItems.title = title;
-      toDoItems.description = "description";
-      toDoItems.priority = "priority";
-    }
-  };
+  function toDoItems(title, description, priority, notes, checklist, duedate) {
+    this.title = title;
+    this.description = description;
+    this.priority = priority;
+    this.notes = notes;
+    this.checklist = checklist;
+    this.duedate = duedate;
+  }
 
-  return {toDoItems};
 })();
-
-export default project;
