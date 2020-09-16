@@ -5,6 +5,7 @@
 .nav {
   background-color: blue;
   width: 100vw;
+  padding: 0 2em;
 }
 .nav-container {
   display: flex;
