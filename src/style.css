@@ -1,4 +1,45 @@
 .hello {
   color: red;
-  background: url('./demo.jpg');
+  background: url("./demo.jpg");
+}
+.nav {
+  background-color: blue;
+  width: 100vw;
+}
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+#left-container {
+  width: 30%;
+}
+
+.nav h1 {
+  color: white;
+  font-size: 20px;
+  margin: auto;
+  padding: 0.4em;
+}
+
+#right-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.bell-item {
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+  padding-right: 1em;
+}
+.plus {
+  color: white;
+  font-size: 1em;
+  text-decoration: none;
+  padding-right: 1em;
 }
