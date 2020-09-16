@@ -20,6 +20,11 @@
   },
   "homepage": "https://github.com/MFahadUmer/todolist#readme",
   "devDependencies": {
+    "@fortawesome/fontawesome-free": "^5.14.0",
+    "@fortawesome/fontawesome-svg-core": "^1.2.30",
+    "@fortawesome/free-brands-svg-icons": "^5.14.0",
+    "@fortawesome/free-regular-svg-icons": "^5.14.0",
+    "@fortawesome/free-solid-svg-icons": "^5.14.0",
     "css-loader": "^4.3.0",
     "exports-loader": "^1.1.0",
     "file-loader": "^6.1.0",

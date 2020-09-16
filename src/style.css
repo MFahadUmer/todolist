@@ -42,7 +42,7 @@
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding:10px 25px;
+  padding: 10px 25px;
 }
 
 .addProject {
@@ -58,12 +58,12 @@
   margin: auto;
 }
 
-.bell-item, .setting-item{
+.bell-item,
+.setting-item {
   color: white;
   text-decoration: none;
   padding-right: 1em;
 }
-
 
 .plus {
   color: white;
@@ -71,6 +71,18 @@
   padding-right: 1em;
 }
 
-.bell-item:hover, .plus:hover, .setting-item:hover {
+.bell-item:hover,
+.plus:hover,
+.setting-item:hover {
   text-decoration: none;
+}
+
+.fa-angle-right {
+  padding-top: 10px;
+  transform: rotate(90deg);
+}
+
+.project-p {
+  font-weight: bold;
+  font-size: 1.1em;
 }
