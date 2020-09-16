@@ -27,40 +27,45 @@ const modal = (() => {
     </div>
     <div class="modal-body">
       <form>
-        <div class="form-group">
-          <label for="project">Project name</label>
-          <input type="text" class="form-control" id="project-form-id" placeholder="Enter project name">
-        </div>
-        <div class="form-group">
-          <label for="project">Project color</label>
-          <button class="button-dropdown form-control" type="button">
+      <div class="">
+      <div class="form-group">
+        <label for="project">Project name</label>
+        <input type="text" class="form-control" id="project-form-id" placeholder="Enter project name">
+      </div>
+      <div class="form-group">
+        <label for="project">Project color</label>
+
+        <div class="button-dropdown border rounded">
+        <button class=" form-control border-0 dropdownbuttonforborder" type="button">
+          <div class='d-flex align-items-center'>
+            <div class="green"></div>
+            <div class=''>Green</div>
+          </div>
+        </button>
+        <div class="dropdown-section">
+          <button class="dropDownDivButtons border-0 form-control" type="button">
             <div class='d-flex align-items-center'>
               <div class="red"></div>
               <div class=''>Red</div>
             </div>
           </button>
-          <div class="dropdown-section">
-            <button class="button-dropdown form-control" type="button">
-              <div class='d-flex align-items-center'>
-                <div class="red"></div>
-                <div class=''>Red</div>
-              </div>
-            </button>
-            <button class="button-dropdown form-control" type="button">
-              <div class='d-flex align-items-center'>
-                <div class="red"></div>
-                <div class=''>Red</div>
-              </div>
-            </button>
-            <button class="button-dropdown form-control" type="button">
-              <div class='d-flex align-items-center'>
-                <div class="red"></div>
-                <div class=''>Red</div>
-              </div>
-            </button>
-          </div>
+          
+          <button class="dropDownDivButtons border-0 form-control" type="button">
+            <div class='d-flex align-items-center'>
+              <div class="red"></div>
+              <div class=''>Red</div>
+            </div>
+          </button>
+          <button class="dropDownDivButtons border-0 form-control" type="button">
+            <div class='d-flex align-items-center'>
+              <div class="red"></div>
+              <div class=''>Red</div>
+            </div>
+          </button>
         </div>
-      </form>
+      </div>
+      </div>
+    </form>
     </div>
     <div class="modal-footer">
       <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>

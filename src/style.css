@@ -126,6 +126,7 @@
   width: 10px;
   border-radius: 50%;
   background-color: green;
+  margin-right: 5px;
 }
 
 .blue {
@@ -134,4 +135,20 @@
 
 select {
   font-family: fontAwesome;
+}
+
+.button-dropdown:hover .dropdown-section{
+  display: block;
+}
+
+.dropdown-section {
+  display: none;
+}
+
+.dropdownbuttonforborder:hover:first-child {
+  border-bottom: 1px solid black;
+}
+
+.dropDownDivButtons:hover {
+  background-color: burlywood;
 }
