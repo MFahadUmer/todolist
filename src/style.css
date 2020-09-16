@@ -100,11 +100,38 @@
 }
 
 .addProjectIcon:focus {
-  background-color:blue;
+  background-color: blue;
   outline: none;
 }
 
 .project-p {
   font-weight: bold;
   font-size: 1.1em;
+}
+
+.black {
+  color: black;
+}
+
+.red {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 5px;
+}
+
+.green {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: green;
+}
+
+.blue {
+  color: blue;
+}
+
+select {
+  font-family: fontAwesome;
 }

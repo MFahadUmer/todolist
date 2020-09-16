@@ -19,14 +19,57 @@ const modal = (() => {
   modal.innerHTML= `
   <div class="modal-dialog" role="document">
   <div class="modal-content">
-  <div class="modal-header">
-  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-</div>
-</div>
+    <div class="modal-header">
+      <h5 class="modal-title" id="exampleModalLabel">Add project</h5>
+      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form>
+        <div class="form-group">
+          <label for="project">Project name</label>
+          <input type="text" class="form-control" id="project-form-id" placeholder="Enter project name">
+        </div>
+        <div class="form-group">
+          <label for="project">Project color</label>
+          <button class="button-dropdown form-control" type="button">
+            <div class='d-flex align-items-center'>
+              <div class="red"></div>
+              <div class=''>Red</div>
+            </div>
+          </button>
+          <div class="dropdown-section">
+            <button class="button-dropdown form-control" type="button">
+              <div class='d-flex align-items-center'>
+                <div class="red"></div>
+                <div class=''>Red</div>
+              </div>
+            </button>
+            <button class="button-dropdown form-control" type="button">
+              <div class='d-flex align-items-center'>
+                <div class="red"></div>
+                <div class=''>Red</div>
+              </div>
+            </button>
+            <button class="button-dropdown form-control" type="button">
+              <div class='d-flex align-items-center'>
+                <div class="red"></div>
+                <div class=''>Red</div>
+              </div>
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      <button type="button" class="btn btn-primary">Add</button>
+    </div>
+  </div>
 </div>`;
 
   addProjectDiv.appendChild(modal);
-
 
   return {
 
