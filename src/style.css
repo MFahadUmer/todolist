@@ -79,7 +79,29 @@
 
 .fa-angle-right {
   padding-top: 10px;
+}
+
+.angle-down {
+  padding-top: 10px;
   transform: rotate(90deg);
+}
+
+.addProjectIcon {
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+}
+
+.addProjectIcon:hover {
+  background-color: aqua;
+  outline: none;
+}
+
+.addProjectIcon:focus {
+  background-color:blue;
+  outline: none;
 }
 
 .project-p {

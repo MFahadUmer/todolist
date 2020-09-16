@@ -17,18 +17,24 @@ const addAndDisplay = (() => {
   {
     myToDoList.push(tasks);
     localStorage.setItem('todo', JSON.stringify(myToDoList));
-    console.log(myToDoList);
   }
 
   const addDisplayproject = (project) =>
   {
     myProjectList.push(project);
     localStorage.setItem('project', JSON.stringify(myProjectList));
-    console.log(myProjectList);
+    return myProjectList;
   }
 
+  const displayProject = (project) => {
+    let projectslist = document.getElementById("projectList");
+    console.log(project);
+    project.forEach((obj, index) => {
+    })
+  };
+
   return {
-    addDisplaytasks, addDisplayproject
+    addDisplaytasks, addDisplayproject,displayProject
   }
 
 })();

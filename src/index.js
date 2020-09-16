@@ -10,6 +10,14 @@ import addAndDisplay from "./storage";
 import project from "./project";
 import navModule from './nav'
 import bodyModule from './body'
+import modal from "./modal";
+import { library, dom } from '@fortawesome/fontawesome-svg-core'
+import { fas } from '@fortawesome/free-solid-svg-icons'
+import { far } from '@fortawesome/free-regular-svg-icons'
+import { fab } from '@fortawesome/free-brands-svg-icons'
+library.add(fas, far, fab)
+dom.i2svg()
+
 
 let newTask = tasks
 newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
@@ -18,7 +26,17 @@ let addAndDisplayTaskArray = addAndDisplay;
 addAndDisplayTaskArray.addDisplaytasks(newTaskArray);
 
 let newProject = project;
-newProject.projects("TO DO LIST");
+newProject.projects("TO LIST");
 let newProjectArray = newProject.addProject();
 let addAndDisplayProjectArray = addAndDisplay;
-addAndDisplayProjectArray.addDisplayproject(newProjectArray);
+
+let projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
+
+document.getElementById("dropDown").addEventListener("click", () => {
+  let projectListDiv = document.getElementById("projectList");
+  projectlist2.forEach((obj, index)=> {
+    let projectListElem = document.createElement("p");
+    projectListElem.innerHTML = `${obj}`;
+    projectListDiv.appendChild(projectListElem);
+  })
+});
