@@ -17,12 +17,12 @@ const navModule = (() => {
     const setting = document.createElement('div')
     setting.innerHTML = `<a href="#" class='setting-item'>setting</a></i>`
     nav.appendChild(leftDiv);
-    nav.appendChild(rightDiv)
-    leftDiv.appendChild(elem)
+    nav.appendChild(rightDiv);
+    leftDiv.appendChild(elem);
     elem.appendChild(text);
-    rightDiv.appendChild(fastTask)
-    rightDiv.appendChild(bell)
-    rightDiv.appendChild(setting)
+    rightDiv.appendChild(fastTask);
+    rightDiv.appendChild(bell);
+    rightDiv.appendChild(setting);
     return nav
   }
   document.querySelector('.nav').appendChild(navBar());

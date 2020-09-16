@@ -13,6 +13,20 @@
   width: 100vw;
 }
 
+.projectStyles {
+  color: brown;
+}
+
+.left-body {
+  width: 30%;
+  background-color: bisque;
+}
+
+.right-body {
+  width: 70%;
+  background-color: aquamarine;
+}
+
 #left-container {
   width: 30%;
 }
@@ -22,6 +36,18 @@
   font-size: 20px;
   margin: auto;
   padding: 0.4em;
+}
+
+.project-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding:10px 25px;
+}
+
+.addProject {
+  color: blue;
+  padding-right: 30px;
 }
 
 #right-container {
@@ -37,6 +63,8 @@
   text-decoration: none;
   padding-right: 1em;
 }
+
+
 .plus {
   color: white;
   text-decoration: none;
