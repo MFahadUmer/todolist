@@ -31,7 +31,7 @@
   margin: auto;
 }
 
-.bell-item {
+.bell-item, .setting-item{
   color: white;
   text-decoration: none;
   padding-right: 1em;
@@ -42,6 +42,6 @@
   padding-right: 1em;
 }
 
-.bell-item:hover, .plus:hover {
+.bell-item:hover, .plus:hover, .setting-item:hover {
   text-decoration: none;
 }
