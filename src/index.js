@@ -5,6 +5,7 @@ import tasks from "./task";
 import addAndDisplay from "./storage";
 import project from "./project";
 import navModule from './nav'
+import bodyModule from './body'
 
 let newTask = tasks
 newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
