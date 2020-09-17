@@ -54,14 +54,14 @@ const modal = (() => {
           
           <button class="dropDownDivButtons border-0 form-control" type="button">
             <div class='d-flex align-items-center'>
-              <div class="red"></div>
-              <div class=''>Red</div>
+              <div class="green"></div>
+              <div class=''>Green</div>
             </div>
           </button>
           <button class="dropDownDivButtons border-0 form-control" type="button">
             <div class='d-flex align-items-center'>
-              <div class="red"></div>
-              <div class=''>Red</div>
+              <div class="blue"></div>
+              <div class=''>Blue</div>
             </div>
           </button>
         </div>

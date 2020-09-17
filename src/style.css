@@ -110,7 +110,11 @@
 }
 
 .black {
-  color: black;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 5px;
 }
 
 .red {
@@ -137,7 +141,11 @@
 }
 
 .blue {
-  color: blue;
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: blue;
+  margin-right: 5px;
 }
 
 select {

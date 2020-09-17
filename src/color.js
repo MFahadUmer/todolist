@@ -1,15 +1,16 @@
 const colorModule = (() => {
-  function changeColor() {
-    const dropObj = ['blue', 'black']
-    console.log(dropObj)
-    console.log(typeof `${dropObj[1]}`)
+  const dropObj = ['black']
 
+  function defaultColor() {
     const styleColor = document.getElementById('colorChange');
     styleColor.style.backgroundColor = `${dropObj[0]}`;
-    var styleContent = document.getElementById('colorName').textContent = `${dropObj[1]}`;
-    console.log(`${dropObj[1]}`)
+    var styleContent = document.getElementById('colorName').textContent = `${dropObj[0]}`;
   }
-  changeColor();
+  defaultColor();
+
+  function changeColor() {
+
+  }
 
   return {}
 
