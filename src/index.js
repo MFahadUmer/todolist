@@ -42,12 +42,12 @@ document.getElementById("dropDown").addEventListener("click", () => {
 });
 
 document.getElementById('button-dropdown').addEventListener('click', () => {
-  document.getElementById('dropdown-section').style.display = 'block'
+  document.getElementById('dropdown-section').classList.toggle('dropdown-section');
 });
 
-document.getElementById('close-dropdown').addEventListener('click', () => {
-  document.getElementById('dropdown-section').style.display = 'none'
-})
+// document.getElementById('close-dropdown').addEventListener('click', () => {
+//   document.getElementById('dropdown-section').style.display = 'none'
+// })
 
 
 

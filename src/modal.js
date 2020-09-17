@@ -38,7 +38,7 @@ const modal = (() => {
         <label for="project">Project color</label>
 
         <div class="button-dropdown border rounded" id='button-dropdown'>
-        <button class=" form-control border-0 dropdownbuttonforborder buttonChange" type="button">
+        <button  class=" form-control border-0 dropdownbuttonforborder buttonChange" type="button">
           <div class='d-flex align-items-center'>
             <div id='colorChange' class="colorChange"></div>
             <div id='colorName' class='colorName'></div>
