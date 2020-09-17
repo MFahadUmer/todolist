@@ -1,8 +1,9 @@
 const project = (() => {
-  function projects(project) {
+  function projects(project, color) {
     this.projectName = project;
+    this.projectColor = color;
     this.addProject = function() {
-      return [this.projectName];
+      return [this.projectName, this.projectColor];
     };
   }
   return {

@@ -160,6 +160,15 @@ select {
   display: none;
 }
 
+.projectListELemParagraph {
+  padding: 10px 0px;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  text-align: center;
+}
+
 .dropdownbuttonforborder:hover:first-child {
   border-bottom: 1px solid black;
 }

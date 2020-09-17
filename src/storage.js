@@ -24,10 +24,9 @@ const addAndDisplay = (() => {
     return myProjectList;
   }
 
-  const displayProject = (project) => {
+  const displayProject = () => {
     let projectslist = document.getElementById("projectList");
-    project.forEach((obj, index) => {
-    })
+    return myProjectList;
   };
 
   return {

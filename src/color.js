@@ -14,8 +14,12 @@ const colorModule = (() => {
     console.log(buttons[i])
     buttons[i].onclick = function (e) {
      dropObj[0] = this.value
-     console.log(dropObj)
+      defaultColor();
     };
+  }
+
+  return {
+    dropObj
   }
 
 })();

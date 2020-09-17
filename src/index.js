@@ -26,19 +26,36 @@ let addAndDisplayTaskArray = addAndDisplay;
 addAndDisplayTaskArray.addDisplaytasks(newTaskArray);
 
 let newProject = project;
-newProject.projects("TO LIST");
-let newProjectArray = newProject.addProject();
-let addAndDisplayProjectArray = addAndDisplay;
+let newProjectArray;
+let addAndDisplayProjectArray;
+let projectlist2;
 
-let projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
+addProjectForm.onsubmit = (e)=>{
+  e.preventDefault();
+  console.log("Hiii");
+  const projectTitle = document.getElementById("project-form-id").value;
+  const projectColor = colorModule.dropObj[0];
+  newProject.projects(projectTitle,projectColor);
+  newProjectArray = newProject.addProject();
+  addAndDisplayProjectArray = addAndDisplay;
+  projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
+}
+let projectListDisplay = addAndDisplay.displayProject();
+console.log(projectListDisplay);
 
 document.getElementById("dropDown").addEventListener("click", () => {
   let projectListDiv = document.getElementById("projectList");
-  projectlist2.forEach((obj, index) => {
+
+
+  for(let i = 0; i < projectListDisplay.length; i += 1){
     let projectListElem = document.createElement("p");
-    projectListElem.innerHTML = `${obj}`;
+    projectListElem.innerHTML = `${projectListDisplay[i][0]}`;
+    projectListElem.style.backgroundColor = `${projectListDisplay[i][1]}`;
+    projectListElem.classList.add('projectListELemParagraph');
+
     projectListDiv.appendChild(projectListElem);
-  })
+  }
+
 });
 
 document.getElementById('button-dropdown').addEventListener('click', () => {

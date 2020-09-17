@@ -1,6 +1,4 @@
 const modal = (() => {
-
-
   const addProjectDiv = document.getElementById('addProjectDiv');
   const addProjectIcon = document.createElement('button');
   addProjectIcon.setAttribute('type', 'buttom');
@@ -27,8 +25,8 @@ const modal = (() => {
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
+      <form name="addProjectForm" id="addProjectForm">
     <div class="modal-body">
-      <form>
       <div class="">
       <div class="form-group">
         <label for="project">Project name</label>
@@ -67,12 +65,16 @@ const modal = (() => {
         </div>
       </div>
       </div>
-    </form>
+          
     </div>
+    
+
     <div class="modal-footer">
-      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-      <button type="button" class="btn btn-primary">Add</button>
+<!--      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
+      <input type="submit" name="addProjectForm">
+<!--      <input type="submit" class="btn btn-primary" name="addProject">Add</input>-->
     </div>
+    </form>
   </div>
 </div>`;
 
