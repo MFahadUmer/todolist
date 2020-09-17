@@ -1,4 +1,6 @@
 const modal = (() => {
+
+
   const addProjectDiv = document.getElementById('addProjectDiv');
   const addProjectIcon = document.createElement('button');
   addProjectIcon.setAttribute('type', 'buttom');
@@ -16,7 +18,7 @@ const modal = (() => {
   modal.setAttribute('aria-labelledby', 'exampleModalLabel');
   modal.setAttribute('aria-hidden', 'true');
 
-  modal.innerHTML= `
+  modal.innerHTML = `
   <div class="modal-dialog" role="document">
   <div class="modal-content">
     <div class="modal-header">
@@ -36,10 +38,10 @@ const modal = (() => {
         <label for="project">Project color</label>
 
         <div class="button-dropdown border rounded">
-        <button class=" form-control border-0 dropdownbuttonforborder" type="button">
+        <button class=" form-control border-0 dropdownbuttonforborder buttonChange" type="button">
           <div class='d-flex align-items-center'>
-            <div class="green"></div>
-            <div class=''>Green</div>
+            <div id='colorChange' class="colorChange"></div>
+            <div id='colorName' class='colorName'></div>
           </div>
         </button>
         <div class="dropdown-section">
@@ -74,11 +76,10 @@ const modal = (() => {
   </div>
 </div>`;
 
+
   addProjectDiv.appendChild(modal);
 
-  return {
-
-  }
+  return {}
 })();
 
 export default modal
