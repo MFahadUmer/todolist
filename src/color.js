@@ -1,5 +1,5 @@
 const colorModule = (() => {
-  const dropObj = ['black']
+  let dropObj = ['black']
 
   function defaultColor() {
     const styleColor = document.getElementById('colorChange');
@@ -7,15 +7,16 @@ const colorModule = (() => {
     var styleContent = document.getElementById('colorName').textContent = `${dropObj[0]}`;
   }
   defaultColor();
-
-  function changeColor() {
-    
-    const changeStyleColor = document.getElementById('colorChange');
-    changeStyleColor.style.backgroundColor = `${dropObj[0]}`;
-    var styleContent = document.getElementById('colorName').textContent = `${dropObj[0]}`;
+ 
+  var buttons = document.querySelectorAll('[id^=addnew]');
+  var buttonsCount = buttons.length ;
+  for (var i = 0; i < buttonsCount; i += 1) {
+    console.log(buttons[i])
+    buttons[i].onclick = function (e) {
+     dropObj[0] = this.value
+     console.log(dropObj)
+    };
   }
-
-  return {}
 
 })();
 
