@@ -45,20 +45,20 @@ const modal = (() => {
           </div>
         </button>
         <div class="dropdown-section" id='dropdown-section'>
-          <button class="dropDownDivButtons border-0 form-control" type="button">
+          <button class="dropDownDivButtons border-0 form-control close-dropdown" type="button">
             <div class='d-flex align-items-center'>
               <div class="red"></div>
               <div class=''>Red</div>
             </div>
           </button>
           
-          <button class="dropDownDivButtons border-0 form-control" type="button">
+          <button class="dropDownDivButtons border-0 form-control close-dropdown" type="button">
             <div class='d-flex align-items-center'>
               <div class="green"></div>
               <div class=''>Green</div>
             </div>
           </button>
-          <button class="dropDownDivButtons border-0 form-control" type="button">
+          <button class="dropDownDivButtons border-0 form-control close-dropdown" type="button">
             <div class='d-flex align-items-center'>
               <div class="blue"></div>
               <div class=''>Blue</div>

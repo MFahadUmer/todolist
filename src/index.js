@@ -41,6 +41,29 @@ document.getElementById("dropDown").addEventListener("click", () => {
   })
 });
 
-const remItem = document.getElementById('button-dropdown').addEventListener('click', () => {
-  document.getElementById('dropdown-section').classList.remove('dropdown-section')
+document.getElementById('button-dropdown').addEventListener('click', () => {
+  document.getElementById('dropdown-section').style.display = 'block'
 });
+
+document.getElementById('close-dropdown').addEventListener('click', () => {
+  document.getElementById('dropdown-section').style.display = 'none'
+})
+
+
+
+// const closeDrop = document.getElementsByClassName('close-dropdown')
+// function closeDropDown() {
+//   const dissappearDiv = document.getElementById('dropdown-section').style.display = 'none'
+// }
+
+// for (let i = 0; i < closeDrop.length; i++) {
+//   closeDrop[i].addEventListener("click", closeDropDown);
+// }
+
+// function openDropF() {
+//   const openDropDivs = document.getElementsByClassName('close-dropdown')
+//   document.getElementById('dropdown-section').classList.remove('dropdown-section')
+// }
+
+// const openDrop = document.getElementById('button-dropdown')
+// openDrop.addEventListener('click', openDropF)
