@@ -40,3 +40,7 @@ document.getElementById("dropDown").addEventListener("click", () => {
     projectListDiv.appendChild(projectListElem);
   })
 });
+
+const remItem = document.getElementById('button-dropdown').addEventListener('click', () => {
+  document.getElementById('dropdown-section').classList.remove('dropdown-section')
+});

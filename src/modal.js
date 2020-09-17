@@ -37,14 +37,14 @@ const modal = (() => {
       <div class="form-group">
         <label for="project">Project color</label>
 
-        <div class="button-dropdown border rounded">
+        <div class="button-dropdown border rounded" id='button-dropdown'>
         <button class=" form-control border-0 dropdownbuttonforborder buttonChange" type="button">
           <div class='d-flex align-items-center'>
             <div id='colorChange' class="colorChange"></div>
             <div id='colorName' class='colorName'></div>
           </div>
         </button>
-        <div class="dropdown-section">
+        <div class="dropdown-section" id='dropdown-section'>
           <button class="dropDownDivButtons border-0 form-control" type="button">
             <div class='d-flex align-items-center'>
               <div class="red"></div>
@@ -75,7 +75,6 @@ const modal = (() => {
     </div>
   </div>
 </div>`;
-
 
   addProjectDiv.appendChild(modal);
 

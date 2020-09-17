@@ -152,9 +152,9 @@ select {
   font-family: fontAwesome;
 }
 
-.button-dropdown:hover .dropdown-section {
+/* .button-dropdown:hover .dropdown-section {
   display: block;
-}
+} */
 
 .dropdown-section {
   display: none;
