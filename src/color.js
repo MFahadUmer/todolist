@@ -11,7 +11,6 @@ const colorModule = (() => {
   var buttons = document.querySelectorAll('[id^=addnew]');
   var buttonsCount = buttons.length ;
   for (var i = 0; i < buttonsCount; i += 1) {
-    console.log(buttons[i])
     buttons[i].onclick = function (e) {
      dropObj[0] = this.value
       defaultColor();

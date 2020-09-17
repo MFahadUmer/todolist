@@ -1,5 +1,6 @@
 const tasks = (() => {
-  function toDoItems(title, description, priority, notes, checklist, duedate) {
+  function toDoItems(project, title, description, priority, notes, checklist, duedate) {
+    this.project = project;
     this.title = title;
     this.description = description;
     this.priority = priority;
@@ -7,7 +8,7 @@ const tasks = (() => {
     this.checklist = checklist;
     this.duedate = duedate;
     this.addTasks = function() {
-      return [title, description, priority, notes, checklist, duedate];
+      return [project, title, description, priority, notes, checklist, duedate];
     };
   }
 

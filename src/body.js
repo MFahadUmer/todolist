@@ -21,7 +21,7 @@ const bodyModule = (() => {
               aria-controls="collapseExample">
               <i class="fas fa-angle-right fa-2x"></i>
             </a></p>
-          <p class='project-p'> Project</p>
+          <p class='project-p'>Project</p>
         </div>
         <div id="addProjectDiv">
         </div>
@@ -34,6 +34,10 @@ const bodyModule = (() => {
       </div>
   </div>`;
     left.appendChild(project);
+    const task = document.createElement('div');
+    task.setAttribute('id', 'tasksId');
+    task.setAttribute('class', 'tasksClass');
+    right.appendChild(task);
     toDoBody.appendChild(left);
     toDoBody.appendChild(right);
 

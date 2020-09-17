@@ -13,10 +13,14 @@ localStorage.setItem('project', JSON.stringify(myProjectList));
 JSON.parse(localStorage.getItem('project'));
 
 const addAndDisplay = (() => {
-  const addDisplaytasks = (tasks) => {
+  const addtasks = (tasks) => {
     myToDoList.push(tasks);
     localStorage.setItem('todo', JSON.stringify(myToDoList));
   }
+
+  const displayTasks = () => {
+    return myToDoList;
+  };
 
   const addDisplayproject = (project) => {
     myProjectList.push(project);
@@ -30,7 +34,7 @@ const addAndDisplay = (() => {
   };
 
   return {
-    addDisplaytasks, addDisplayproject, displayProject
+    addtasks, displayTasks, addDisplayproject, displayProject
   }
 
 })();

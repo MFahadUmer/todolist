@@ -23,7 +23,8 @@ let newTask = tasks
 newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
 let newTaskArray = newTask.addTasks();
 let addAndDisplayTaskArray = addAndDisplay;
-addAndDisplayTaskArray.addDisplaytasks(newTaskArray);
+addAndDisplayTaskArray.addtasks(newTaskArray);
+let displayTask = addAndDisplayTaskArray.displayTasks();
 
 let newProject = project;
 let newProjectArray;
@@ -40,7 +41,6 @@ const defaultProject = ()=> {
 
 addProjectForm.onsubmit = (e)=>{
   e.preventDefault();
-  console.log("Hiii");
   const projectTitle = document.getElementById("project-form-id").value;
   const projectColor = colorModule.dropObj[0];
   newProject.projects(projectTitle,projectColor);
@@ -54,16 +54,20 @@ if (projectListDisplay.length === 0){
 }
 document.getElementById("dropDown").addEventListener("click", () => {
   let projectListDiv = document.getElementById("projectList");
-  for(let i = 0; i < projectListDisplay.length; i += 1){
+  projectListDisplay.forEach((obj, idx ) =>{
     let projectListElem = document.createElement("p");
-    projectListElem.innerHTML = `${projectListDisplay[i][0]}`;
-    projectListElem.style.backgroundColor = `${projectListDisplay[i][1]}`;
-    projectListElem.classList.add('projectListELemParagraph');
-
-    projectListDiv.appendChild(projectListElem);
-  }
-
+    projectListElem.setAttribute('id', `project${idx}`);
+      projectListElem.innerHTML = `${obj[0]}`;
+      projectListElem.style.backgroundColor = `${obj[1]}`;
+      projectListElem.classList.add('projectListELemParagraph');
+      projectListDiv.appendChild(projectListElem);
+  });
 });
+
+document.getElementById('dropDown').addEventListener('click', ()=>{
+  let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
+});
+
 
 document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
