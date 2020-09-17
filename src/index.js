@@ -27,8 +27,16 @@ addAndDisplayTaskArray.addDisplaytasks(newTaskArray);
 
 let newProject = project;
 let newProjectArray;
-let addAndDisplayProjectArray;
+let addAndDisplayProjectArray = addAndDisplay;
 let projectlist2;
+
+const defaultProject = ()=> {
+  let defaultProjectDetails = ['Welcome', 'violet'];
+  newProject.projects(defaultProjectDetails[0],defaultProjectDetails[1]);
+  newProjectArray = newProject.addProject();
+  addAndDisplayProjectArray = addAndDisplay;
+  projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
+}
 
 addProjectForm.onsubmit = (e)=>{
   e.preventDefault();
@@ -41,12 +49,11 @@ addProjectForm.onsubmit = (e)=>{
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
 }
 let projectListDisplay = addAndDisplay.displayProject();
-console.log(projectListDisplay);
-
+if (projectListDisplay.length === 0){
+  defaultProject();
+}
 document.getElementById("dropDown").addEventListener("click", () => {
   let projectListDiv = document.getElementById("projectList");
-
-
   for(let i = 0; i < projectListDisplay.length; i += 1){
     let projectListElem = document.createElement("p");
     projectListElem.innerHTML = `${projectListDisplay[i][0]}`;
