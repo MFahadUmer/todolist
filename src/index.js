@@ -53,27 +53,32 @@ let projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
   defaultProject();
 }
-document.getElementById("dropDown").addEventListener("click", () => {
-  let projectListDiv = document.getElementById("projectList");
-  projectListDisplay.forEach((obj, idx) => {
-    let projectListElem = document.createElement("p");
-    projectListElem.setAttribute('id', `project${idx}`);
-    projectListElem.innerHTML = `${obj[0]}`;
-    projectListElem.style.backgroundColor = `${obj[1]}`;
-    projectListElem.classList.add('projectListELemParagraph');
-    projectListDiv.appendChild(projectListElem);
-  });
-});
+
+var times = 0;
+const executeOddClick = () => {
+  times++
+  if (times % 2 != 0) {
+    let projectListDiv = document.getElementById("projectList");
+    projectListDisplay.forEach((obj, idx) => {
+      let projectListElem = document.createElement("p");
+      projectListElem.setAttribute('id', `project${idx}`);
+      projectListElem.innerHTML = `${obj[0]}`;
+      projectListElem.style.backgroundColor = `${obj[1]}`;
+      projectListElem.classList.add('projectListELemParagraph');
+      projectListDiv.appendChild(projectListElem);
+    });
+  }
+}
+
+document.getElementById("dropDown").addEventListener("click", executeOddClick)
 
 document.getElementById('dropDown').addEventListener('click', () => {
   let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
 
-
 document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
 });
-
 
 var timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
@@ -84,5 +89,5 @@ document.getElementById('dropDown').addEventListener('click', () => {
 });
 
 document.getElementById('submit-reload').addEventListener('click', () => {
-  document.location.reload();
+  window.location.reload();
 })
