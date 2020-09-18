@@ -104,21 +104,30 @@ const executeOddClick = () => {
         projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
         document.querySelector('.taskContainer').style.display = 'flex';
         let taskListValues = addAndDisplayTaskArray.displayTasks();
-        taskListValues.forEach((obj) => {
+        taskListValues.forEach((obj, idx) => {
           if (obj[0] === projectTitle) {
             let taskList = document.createElement('div');
             taskList.setAttribute('id', 'taskList');
             taskList.setAttribute('class', 'taskList');
             taskList.classList.remove('taskList');
             taskList.innerHTML = `
-            
               <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
               <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
               <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+              <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
            <br> `;
+
+
+            //  let deleteTask = document.createElement('div')
+            //  deleteTask.setAttribute('id', 'deleteTask')
+            //  deleteTask.innerHTML = ` <i class="fas fa-trash"></i>`
+
             projectTitleDivForTaskParentDiv.appendChild(taskList);
+            document.getElementById('delete').addEventListener('click', () => {
+              console.log(idx)
+            })
           }
         });
       });
