@@ -123,8 +123,6 @@ const executeOddClick = () => {
             document.getElementById('delete').addEventListener('click', () => {
               taskListValues.splice(idx, 1);
               localStorage.setItem('todo', JSON.stringify(taskListValues));
-              console.log(taskListValues);
-              console.log(localStorage)
             })
           }
         });
