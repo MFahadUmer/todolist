@@ -1,5 +1,6 @@
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import $ from 'jquery';
 import '@fortawesome/fontawesome-free/js/fontawesome'
 import '@fortawesome/fontawesome-free/js/solid'
 import '@fortawesome/fontawesome-free/js/regular'
@@ -31,40 +32,40 @@ let newProjectArray;
 let addAndDisplayProjectArray = addAndDisplay;
 let projectlist2;
 
-const defaultProject = ()=> {
+const defaultProject = () => {
   let defaultProjectDetails = ['Welcome', 'violet'];
-  newProject.projects(defaultProjectDetails[0],defaultProjectDetails[1]);
+  newProject.projects(defaultProjectDetails[0], defaultProjectDetails[1]);
   newProjectArray = newProject.addProject();
   addAndDisplayProjectArray = addAndDisplay;
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
 }
 
-addProjectForm.onsubmit = (e)=>{
+addProjectForm.onsubmit = (e) => {
   e.preventDefault();
   const projectTitle = document.getElementById("project-form-id").value;
   const projectColor = colorModule.dropObj[0];
-  newProject.projects(projectTitle,projectColor);
+  newProject.projects(projectTitle, projectColor);
   newProjectArray = newProject.addProject();
   addAndDisplayProjectArray = addAndDisplay;
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
 }
 let projectListDisplay = addAndDisplay.displayProject();
-if (projectListDisplay.length === 0){
+if (projectListDisplay.length === 0) {
   defaultProject();
 }
 document.getElementById("dropDown").addEventListener("click", () => {
   let projectListDiv = document.getElementById("projectList");
-  projectListDisplay.forEach((obj, idx ) =>{
+  projectListDisplay.forEach((obj, idx) => {
     let projectListElem = document.createElement("p");
     projectListElem.setAttribute('id', `project${idx}`);
-      projectListElem.innerHTML = `${obj[0]}`;
-      projectListElem.style.backgroundColor = `${obj[1]}`;
-      projectListElem.classList.add('projectListELemParagraph');
-      projectListDiv.appendChild(projectListElem);
+    projectListElem.innerHTML = `${obj[0]}`;
+    projectListElem.style.backgroundColor = `${obj[1]}`;
+    projectListElem.classList.add('projectListELemParagraph');
+    projectListDiv.appendChild(projectListElem);
   });
 });
 
-document.getElementById('dropDown').addEventListener('click', ()=>{
+document.getElementById('dropDown').addEventListener('click', () => {
   let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
 
@@ -74,3 +75,10 @@ document.getElementById('button-dropdown').addEventListener('click', () => {
   // colorModule.changeColor();
 });
 
+var timesClicked = 0;
+$("#dropDown").click(function() {
+timesClicked++;
+if (timesClicked%2==0) {
+  window.location.reload();
+  } 
+})

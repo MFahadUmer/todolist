@@ -14,7 +14,6 @@ const bodyModule = (() => {
     const project = document.createElement('div');
     project.setAttribute('class', 'projectStyles');
     project.innerHTML = `
-    <div>
       <div class="project-section">
         <div class='d-flex align-items-center'>
           <p><a id="dropDown" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
@@ -26,13 +25,12 @@ const bodyModule = (() => {
         <div id="addProjectDiv">
         </div>
       </div>
-      <div>
+      <div id='reload'>
         <div class="collapse" id="collapseExample">
           <div id="projectList" class="card card-body">
           </div>
         </div>
-      </div>
-  </div>`;
+      </div>`;
     left.appendChild(project);
     const task = document.createElement('div');
     task.setAttribute('id', 'tasksId');
