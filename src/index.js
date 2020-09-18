@@ -28,7 +28,16 @@ let addAndDisplayProjectArray = addAndDisplay;
 let projectlist2;
 let addAndDisplayTaskArray = addAndDisplay;
 
-taskForm.onsubmit = (e)=> {
+const defaultTask = () => {
+  let newTask = tasks
+  newTask.toDoItems('Welcome', 'Go shopping', 'Buy milk and honey', 'Urgent', 'Buy items to restoke shelf', '08/18/2020');
+  let newTaskArray = newTask.addTasks();
+  addAndDisplayTaskArray.addtasks(newTaskArray);
+  let displayTask = addAndDisplayTaskArray.displayTasks();
+  document.getElementById('task-form-id').classList.add("task-form-class");
+}
+
+taskForm.onsubmit = (e) => {
   e.preventDefault();
   let taskTitle = document.getElementById('taskTitle').value;
   let taskDesc = document.getElementById('taskDesc').value;
@@ -41,7 +50,6 @@ taskForm.onsubmit = (e)=> {
   addAndDisplayTaskArray.addtasks(newTaskArray);
   let displayTask = addAndDisplayTaskArray.displayTasks();
   document.getElementById('task-form-id').classList.add("task-form-class");
-
 }
 
 const defaultProject = () => {
@@ -64,6 +72,7 @@ addProjectForm.onsubmit = (e) => {
 let projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
   defaultProject();
+  defaultTask();
 }
 
 var times = 0;
@@ -84,9 +93,9 @@ const executeOddClick = () => {
       projectListDiv.appendChild(projectListElem);
     });
 
-    let allProjectIds  = document.querySelectorAll('#projectId');
+    let allProjectIds = document.querySelectorAll('#projectId');
     allProjectIds.forEach((obj, idx) => {
-      obj.addEventListener('click', ()=> {
+      obj.addEventListener('click', () => {
         projectTitle = obj.innerHTML;
         let projectTitleDivForTask = document.createElement('div');
         projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
@@ -96,34 +105,29 @@ const executeOddClick = () => {
         document.querySelector('.taskContainer').style.display = 'flex';
         let taskListValues = addAndDisplayTaskArray.displayTasks();
         taskListValues.forEach((obj) => {
-          if (obj[0] === projectTitle){
+          if (obj[0] === projectTitle) {
             let taskList = document.createElement('div');
             taskList.setAttribute('id', 'taskList');
             taskList.setAttribute('class', 'taskList');
             taskList.classList.remove('taskList');
             taskList.innerHTML = `
             
-      <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
-      <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
-      <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-      <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
-      <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+              <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
+              <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
+              <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
+              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
            <br> `;
-
             projectTitleDivForTaskParentDiv.appendChild(taskList);
           }
         });
       });
     });
 
-    document.getElementById('taskAddC').addEventListener('click', ()=> {
-      document.getElementById('taskList').classList.add('taskList')
+    document.getElementById('taskAddC').addEventListener('click', () => {
       document.getElementById('task-form-id').classList.remove("task-form-class");
     });
-
-
   }
-
 }
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)

@@ -30,16 +30,9 @@ const bodyModule = (() => {
         </div>
       </div>`;
     left.appendChild(project);
-    // const taskAddPlusC = document.createElement('div');
-    // taskAddPlusC.setAttribute('class', 'taskContainer')
-    // taskAddPlusC.setAttribute('id', 'taskAddC')
-    // taskAddPlusC.innerHTML = `<div>
-    //   <button id='add-id' class='add-class'>+</button></div>
-    //   <div class='ml-2'><p class='add-task-text'>Add task</p></div>`
     const task = document.createElement('div');
     task.setAttribute('id', 'tasksId');
     task.setAttribute('class', 'tasksClass');
-    // right.appendChild(taskAddPlusC)
     right.appendChild(task);
     toDoBody.appendChild(left);
     toDoBody.appendChild(right);
