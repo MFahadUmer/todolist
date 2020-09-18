@@ -72,13 +72,17 @@ document.getElementById('dropDown').addEventListener('click', () => {
 
 document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
-  // colorModule.changeColor();
 });
 
+
 var timesClicked = 0;
-$("#dropDown").click(function() {
-timesClicked++;
-if (timesClicked%2==0) {
-  window.location.reload();
-  } 
+document.getElementById('dropDown').addEventListener('click', () => {
+  timesClicked++
+  if (timesClicked % 2 == 0) {
+    document.location.reload();
+  }
+});
+
+document.getElementById('submit-reload').addEventListener('click', () => {
+  document.location.reload();
 })

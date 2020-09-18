@@ -65,18 +65,14 @@ const modal = (() => {
         </div>
       </div>
       </div>
-          
     </div>
-    
 
     <div class="modal-footer">
-<!--      <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>-->
-      <input type="submit" name="addProjectForm">
-<!--      <input type="submit" class="btn btn-primary" name="addProject">Add</input>-->
+      <input type="submit" name="addProjectForm" id='submit-reload'>
     </div>
     </form>
   </div>
-</div>`;
+  </div>`;
 
   addProjectDiv.appendChild(modal);
 
