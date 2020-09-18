@@ -119,14 +119,10 @@ const executeOddClick = () => {
               <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
            <br> `;
 
-
-            //  let deleteTask = document.createElement('div')
-            //  deleteTask.setAttribute('id', 'deleteTask')
-            //  deleteTask.innerHTML = ` <i class="fas fa-trash"></i>`
-
             projectTitleDivForTaskParentDiv.appendChild(taskList);
             document.getElementById('delete').addEventListener('click', () => {
-              console.log(idx)
+              taskListValues.splice(idx, 1);
+              console.log(taskListValues);
             })
           }
         });
