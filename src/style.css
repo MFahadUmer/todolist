@@ -193,3 +193,24 @@ select {
 .task-form-class {
   padding: 1em;
 }
+
+.taskContainer {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+}
+
+.add-task-text {
+  padding-top: 12px;
+}
+
+.add-class {
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: aqua;
+}
