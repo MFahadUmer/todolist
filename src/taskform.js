@@ -44,6 +44,11 @@ const taskFormModule = (() => {
         <label for="exampleFormControlTextarea1">Notes</label>
         <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
       </div>
+
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <button type="button" class="btn btn-primary">Add task</button>
+      </div>
     </form>`
     return taskFormContainer
   }
