@@ -22,6 +22,11 @@ library.add(fas, far, fab)
 dom.i2svg()
 
 let projectTitle;
+let newProject = project;
+let newProjectArray;
+let addAndDisplayProjectArray = addAndDisplay;
+let projectlist2;
+let addAndDisplayTaskArray = addAndDisplay;
 
 taskForm.onsubmit = (e)=> {
   e.preventDefault();
@@ -33,17 +38,11 @@ taskForm.onsubmit = (e)=> {
   let newTask = tasks
   newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
   let newTaskArray = newTask.addTasks();
-  let addAndDisplayTaskArray = addAndDisplay;
   addAndDisplayTaskArray.addtasks(newTaskArray);
   let displayTask = addAndDisplayTaskArray.displayTasks();
   document.getElementById('task-form-id').classList.add("task-form-class");
 
 }
-
-let newProject = project;
-let newProjectArray;
-let addAndDisplayProjectArray = addAndDisplay;
-let projectlist2;
 
 const defaultProject = () => {
   let defaultProjectDetails = ['Welcome', 'violet'];
@@ -94,17 +93,38 @@ const executeOddClick = () => {
         let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
         projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
         projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
-        document.getElementById('task-form-id').classList.remove("task-form-class");
+        document.querySelector('.taskContainer').style.display = 'flex';
+        let taskListValues = addAndDisplayTaskArray.displayTasks();
+        taskListValues.forEach((obj) => {
+          if (obj[0] === projectTitle){
+            let taskList = document.createElement('div');
+            taskList.setAttribute('id', 'taskList');
+            taskList.setAttribute('class', 'taskList');
+            taskList.classList.remove('taskList');
+            taskList.innerHTML = `
+            
+      <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
+      <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
+      <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
+      <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+      <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+           <br> `;
+
+            projectTitleDivForTaskParentDiv.appendChild(taskList);
+          }
+        });
       });
+    });
+
+    document.getElementById('taskAddC').addEventListener('click', ()=> {
+      document.getElementById('taskList').classList.add('taskList')
+      document.getElementById('task-form-id').classList.remove("task-form-class");
     });
 
 
   }
 
 }
-
-// document.getElementById("dropDown").addEventListener("click", ()=> {
-// });
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
 

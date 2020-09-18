@@ -190,8 +190,23 @@ select {
   display: none;
 }
 
+.taskcategory {
+  font-weight: bold;
+  font-size: 18px;
+  color: black;
+}
+
+.taskList {
+  display: none;
+}
+
+.taskname {
+  font-size: 18px;
+  color: blue;
+}
+
 .taskContainer {
-  display: flex;
+  display: none;
   align-items: center;
   width: 100%;
   padding: 10px;

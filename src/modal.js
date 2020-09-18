@@ -4,13 +4,13 @@ const modal = (() => {
   addProjectIcon.setAttribute('type', 'buttom');
   addProjectIcon.setAttribute('class', 'addProjectIcon');
   addProjectIcon.setAttribute('data-toggle', 'modal');
-  addProjectIcon.setAttribute('data-target', '#exampleModal');
+  addProjectIcon.setAttribute('data-target', '#projectModal');
   addProjectIcon.innerHTML = '+';
   addProjectDiv.appendChild(addProjectIcon);
 
   const modal = document.createElement("div");
   modal.setAttribute('class', 'modal fade');
-  modal.setAttribute('id', 'exampleModal');
+  modal.setAttribute('id', 'projectModal');
   modal.setAttribute('tabindex', '-1');
   modal.setAttribute('role', 'dialog');
   modal.setAttribute('aria-labelledby', 'exampleModalLabel');
