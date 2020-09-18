@@ -21,12 +21,24 @@ import { fab } from '@fortawesome/free-brands-svg-icons'
 library.add(fas, far, fab)
 dom.i2svg()
 
-let newTask = tasks
-newTask.toDoItems("Hillary", "Doe", 50, "blue", "jeez", 'sgdffd');
-let newTaskArray = newTask.addTasks();
-let addAndDisplayTaskArray = addAndDisplay;
-addAndDisplayTaskArray.addtasks(newTaskArray);
-let displayTask = addAndDisplayTaskArray.displayTasks();
+let projectTitle;
+
+taskForm.onsubmit = (e)=> {
+  e.preventDefault();
+  let taskTitle = document.getElementById('taskTitle').value;
+  let taskDesc = document.getElementById('taskDesc').value;
+  let taskPriority = document.getElementById('taskPriority').value;
+  let taskDate = document.getElementById('taskDate').value;
+  let taskNotes = document.getElementById('taskNotes').value;
+  let newTask = tasks
+  newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
+  let newTaskArray = newTask.addTasks();
+  let addAndDisplayTaskArray = addAndDisplay;
+  addAndDisplayTaskArray.addtasks(newTaskArray);
+  let displayTask = addAndDisplayTaskArray.displayTasks();
+  document.getElementById('task-form-id').classList.add("task-form-class");
+
+}
 
 let newProject = project;
 let newProjectArray;
@@ -62,17 +74,37 @@ const executeOddClick = () => {
     let projectListDiv = document.getElementById("projectList");
     projectListDisplay.forEach((obj, idx) => {
       let projectListElem = document.createElement("p");
-      projectListElem.setAttribute('id', `project${idx}`);
+      projectListElem.setAttribute('id', `projectId`);
       projectListElem.addEventListener('click', () => {
-        console.log(projectListElem.id);
-      })
+        projectTitle = obj[0];
+      });
+      console.log(obj);
       projectListElem.innerHTML = `${obj[0]}`;
       projectListElem.style.backgroundColor = `${obj[1]}`;
       projectListElem.classList.add('projectListELemParagraph');
       projectListDiv.appendChild(projectListElem);
     });
+
+    let allProjectIds  = document.querySelectorAll('#projectId');
+    allProjectIds.forEach((obj, idx) => {
+      obj.addEventListener('click', ()=> {
+        projectTitle = obj.innerHTML;
+        let projectTitleDivForTask = document.createElement('div');
+        projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
+        let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+        projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
+        projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
+        document.getElementById('task-form-id').classList.remove("task-form-class");
+      });
+    });
+
+
   }
+
 }
+
+// document.getElementById("dropDown").addEventListener("click", ()=> {
+// });
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
 

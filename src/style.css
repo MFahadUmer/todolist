@@ -187,7 +187,7 @@ select {
 
 
 .task-form-class {
-  padding: 1em;
+  display: none;
 }
 
 .taskContainer {
