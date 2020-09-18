@@ -17,6 +17,10 @@
   color: brown;
 }
 
+.body-class {
+  display: flex;
+}
+
 .left-body {
   width: 30%;
   background-color: bisque;
@@ -24,7 +28,7 @@
 
 .right-body {
   width: 70%;
-  background-color: aquamarine;
+  background-color: aqua;
 }
 
 #left-container {

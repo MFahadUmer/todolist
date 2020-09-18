@@ -62,6 +62,9 @@ const executeOddClick = () => {
     projectListDisplay.forEach((obj, idx) => {
       let projectListElem = document.createElement("p");
       projectListElem.setAttribute('id', `project${idx}`);
+      projectListElem.addEventListener('click', () => {
+        console.log(projectListElem.id);
+      })
       projectListElem.innerHTML = `${obj[0]}`;
       projectListElem.style.backgroundColor = `${obj[1]}`;
       projectListElem.classList.add('projectListELemParagraph');
@@ -80,6 +83,7 @@ document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
 });
 
+//remember to fix
 var timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
   timesClicked++
