@@ -1,3 +1,7 @@
+body, option {
+  font-family: 'Roboto', sans-serif;
+}
+
 .hello {
   color: red;
   background: url("./demo.jpg");
@@ -11,6 +15,11 @@
   display: flex;
   justify-content: space-between;
   width: 100vw;
+}
+
+.body-container {
+  margin: 0 10px;
+  padding: 10px;
 }
 
 .projectStyles {
@@ -28,7 +37,6 @@
 
 .right-body {
   width: 70%;
-  background-color: aqua;
 }
 
 #left-container {
@@ -179,4 +187,9 @@ select {
 
 .dropDownDivButtons:hover {
   background-color: burlywood;
+}
+
+
+.task-form-class {
+  padding: 1em;
 }
