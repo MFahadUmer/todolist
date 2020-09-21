@@ -1,7 +1,7 @@
 const modal = (() => {
   const addProjectDiv = document.getElementById('addProjectDiv');
   const addProjectIcon = document.createElement('button');
-  addProjectIcon.setAttribute('type', 'buttom');
+  addProjectIcon.setAttribute('type', 'button');
   addProjectIcon.setAttribute('class', 'addProjectIcon');
   addProjectIcon.setAttribute('data-toggle', 'modal');
   addProjectIcon.setAttribute('data-target', '#projectModal');

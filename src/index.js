@@ -118,7 +118,30 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
               <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
-                <button class="edit mr-4" id='edit' type="button" data-toggle="modal" data-target="#updateModal"><i class="fas fa-pencil-alt"></i></button>
+              <div>
+              <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              <div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="updateTaskModalLabel">Modal Update</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body">
+                      
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              </div>
                 <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
               </div>
            <br> `;
