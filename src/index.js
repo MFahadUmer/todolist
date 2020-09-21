@@ -115,8 +115,8 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
               <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
-              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[4]}</span></div>
+              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
               <div>
               <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
@@ -131,12 +131,42 @@ const executeOddClick = () => {
                         <span aria-hidden="true">&times;</span>
                       </button>
                     </div>
-                    <div class="modal-body">
-                      
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                      <button type="button" class="btn btn-primary">Save changes</button>
+                    <div class="modal-body" id='modal-update'>
+                    <form id="taskForm" name="taskForm">
+                        <div class="form-group">
+                        <label for="taskTitle">Title</label>
+                        <input type="text" class="form-control" id="taskTitle" value=${obj[1]}>
+                        </div>
+                        <div class="form-group">
+                        <label for="taskDesc">Description</label>
+                        <input type="text" class="form-control" id="taskDesc" value=${obj[2]}>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="taskPriority">Priority</label>
+                          <select class="form-control" id="taskPriority">
+                            <option>Low</option>
+                            <option>Normal</option>
+                            <option>High</option>
+                            <option>Urgent</option>
+                            <option>Important</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="taskDate">Date</label>
+                          <input class="form-control" type="date" value=${obj[5]} id="taskDate">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="taskNotes">Notes</label>
+                          <textarea class="form-control" id="taskNotes" rows="3" >${obj[4]}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <input type="submit" class="btn btn-primary" value="Update">
+                        </div>
+                      </form>      
                     </div>
                   </div>
                 </div>
