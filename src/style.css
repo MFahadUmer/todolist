@@ -229,3 +229,8 @@ select {
 .fa-trash, .fa-trash:hover, .fa-pencil-alt, .fa-pencil-alt:hover {
   cursor: pointer;
 }
+
+.edit {
+  border: none;
+  background-color: white;
+}

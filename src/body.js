@@ -22,6 +22,8 @@ const bodyModule = (() => {
         </div>
         <div id="addProjectDiv">
         </div>
+        <div id="addModalDiv">
+        </div>
       </div>
       <div id='reload'>
         <div class="collapse" id="collapseExample">

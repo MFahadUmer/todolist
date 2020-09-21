@@ -14,6 +14,7 @@ import bodyModule from './body'
 import modal from "./modal";
 import colorModule from './color'
 import taskFormModule from './taskform'
+import updateModal from "./update"
 import { library, dom } from '@fortawesome/fontawesome-svg-core'
 import { fas } from '@fortawesome/free-solid-svg-icons'
 import { far } from '@fortawesome/free-regular-svg-icons'
@@ -117,7 +118,7 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
               <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
-                <div class="edit mr-4" id='edit'><i class="fas fa-pencil-alt"></i></div>
+                <button class="edit mr-4" id='edit' type="button" data-toggle="modal" data-target="#updateModal"><i class="fas fa-pencil-alt"></i></button>
                 <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
               </div>
            <br> `;
