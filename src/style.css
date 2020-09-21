@@ -226,6 +226,6 @@ select {
   font-size: 20px;
 }
 
-.fa-trash, .fa-trash:hover {
+.fa-trash, .fa-trash:hover, .fa-pencil-alt, .fa-pencil-alt:hover {
   cursor: pointer;
 }

@@ -116,7 +116,10 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
               <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
-              <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
+              <div class='d-flex flex-row'>
+                <div class="edit mr-4" id='edit'><i class="fas fa-pencil-alt"></i></div>
+                <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
+              </div>
            <br> `;
 
             projectTitleDivForTaskParentDiv.appendChild(taskList);
