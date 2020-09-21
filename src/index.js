@@ -29,6 +29,13 @@ let addAndDisplayProjectArray = addAndDisplay;
 let projectlist2;
 let addAndDisplayTaskArray = addAndDisplay;
 
+function deleteTask() {
+  console.log("Yessssssssssss");
+}
+// var deleteTask = (idx) => {
+//   console.log(idx);
+// }
+
 const defaultTask = () => {
   let newTask = tasks
   newTask.toDoItems('Welcome', 'Go shopping', 'Buy milk and honey', 'Urgent', 'Buy items to restoke shelf', '08/18/2020');
@@ -97,16 +104,16 @@ const executeOddClick = () => {
     let allProjectIds = document.querySelectorAll('#projectId');
     allProjectIds.forEach((obj, idx) => {
       obj.addEventListener('click', () => {
-        projectTitle = obj.innerHTML;
-        let projectTitleDivForTask = document.createElement('div');
-        projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
-        let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
-        projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
-        projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
-        document.querySelector('.taskContainer').style.display = 'flex';
-        let taskListValues = addAndDisplayTaskArray.displayTasks();
-        taskListValues.forEach((obj, idx) => {
-          if (obj[0] === projectTitle) {
+        if(obj[0] === projectTitle) {
+          projectTitle = obj.innerHTML;
+          let projectTitleDivForTask = document.createElement('div');
+          projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
+          let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+          projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
+          projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
+          document.querySelector('.taskContainer').style.display = 'flex';
+          let taskListValues = addAndDisplayTaskArray.displayTasks();
+          taskListValues.forEach((obj, idx) => {
             let taskList = document.createElement('div');
             taskList.setAttribute('id', 'taskList');
             taskList.setAttribute('class', 'taskList');
@@ -119,6 +126,8 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
               <div>
+              <button class="delete" id='delete'><i class="fas fa-trash"></i></button>
+              
               <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
                 <i class="fas fa-pencil-alt"></i>
               </button>
@@ -141,7 +150,6 @@ const executeOddClick = () => {
                         <label for="taskDesc">Description</label>
                         <input type="text" class="form-control" id="taskDesc" value=${obj[2]}>
                         </div>
-
                         <div class="form-group">
                           <label for="taskPriority">Priority</label>
                           <select class="form-control" id="taskPriority">
@@ -172,17 +180,29 @@ const executeOddClick = () => {
                 </div>
               </div>
               </div>
-                <div class="delete" id='delete'><i class="fas fa-trash"></i></div>
               </div>
            <br> `;
 
             projectTitleDivForTaskParentDiv.appendChild(taskList);
-            document.getElementById('delete').addEventListener('click', () => {
-              taskListValues.splice(idx, 1);
-              localStorage.setItem('todo', JSON.stringify(taskListValues));
+            // projectTitleDivForTaskParentDiv.appendChild(taskList);
+            // projectTitleDivForTaskParentDiv.appendChild(taskList);
+
+            // document.getElementById('delete').addEventListener('click', () => {
+            //   taskListValues.splice(idx, 1);
+            //   console.log(idx);
+            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
+            // })
+
+          });
+          let deleteTask = document.querySelectorAll('.delete');
+          deleteTask.forEach((obj, idx) => {
+            obj.addEventListener('click', () => {
+              // let deleted = taskListValues.splice(taskListValues[idx], 1);
+              console.log(idx);
+              // localStorage.setItem('todo', JSON.stringify(taskListValues));
             })
-          }
-        });
+          });
+        }
       });
     });
 
@@ -191,6 +211,8 @@ const executeOddClick = () => {
     });
   }
 }
+
+document.querySelectorAll('.delete').forEach(item => { item.addEventListener('click', event => { console.log("Uemsd") }) })
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
 
