@@ -225,3 +225,7 @@ select {
 .tasksClass h2 {
   font-size: 20px;
 }
+
+.fa-trash, .fa-trash:hover {
+  cursor: pointer;
+}
