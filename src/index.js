@@ -178,14 +178,7 @@ const executeOddClick = () => {
            <br> `;
 
             projectTitleDivForTaskParentDiv.appendChild(taskList);
-            // projectTitleDivForTaskParentDiv.appendChild(taskList);
-            // projectTitleDivForTaskParentDiv.appendChild(taskList);
 
-            // document.getElementById('delete').addEventListener('click', () => {
-            //   taskListValues.splice(idx, 1);
-            //   console.log(idx);
-            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
-            // })
           }
 
         });
@@ -194,12 +187,15 @@ const executeOddClick = () => {
         deleteTask.forEach((obj, idx) => {
           obj.addEventListener('click', () => {
             let idDelete = obj.id
-            console.log(idDelete.split(''))
-           console.log(parseInt(idDelete[-1]))
-            //   taskListValues.splice(taskListValues[idx + 1], 1);
-            //   console.log(taskListValues)
-              console.log(idx);
-            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
+            var arr = idDelete.split('')
+            var deleteIndex = parseInt(arr[arr.length - 1])
+            delete taskListValues[deleteIndex]
+            var array = taskListValues
+            var filtered = array.filter(function (el) {
+              return el != null;
+            });
+            taskListValues = filtered
+            localStorage.setItem('todo', JSON.stringify(taskListValues));
           })
         });
       });
