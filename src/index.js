@@ -199,19 +199,13 @@ const executeOddClick = () => {
 
           });
 
-
-
-
-
-
-
-
           let deleteTask = document.querySelectorAll('.delete');
           deleteTask.forEach((obj, idx) => {
             obj.addEventListener('click', () => {
-              // let deleted = taskListValues.splice(taskListValues[idx], 1);
+              taskListValues.splice(taskListValues[idx+1], 1);
+              console.log(taskListValues)
               console.log(idx);
-              // localStorage.setItem('todo', JSON.stringify(taskListValues));
+              localStorage.setItem('todo', JSON.stringify(taskListValues));
             })
           });
         });
