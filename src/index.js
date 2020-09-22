@@ -45,6 +45,7 @@ taskForm.onsubmit = (e) => {
   let taskPriority = document.getElementById('taskPriority').value;
   let taskDate = document.getElementById('taskDate').value;
   let taskNotes = document.getElementById('taskNotes').value;
+  document.getElementById('taskForm').reset();
   let newTask = tasks
   newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
   let newTaskArray = newTask.addTasks();
@@ -69,7 +70,6 @@ addProjectForm.onsubmit = (e) => {
   newProjectArray = newProject.addProject();
   addAndDisplayProjectArray = addAndDisplay;
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
-  addProjectForm.reset();
 }
 let projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
@@ -116,8 +116,8 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
               <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[4]}</span></div>
-              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[5]}</span></div>
+              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
               <div>
               <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
@@ -135,18 +135,18 @@ const executeOddClick = () => {
                       </button>
                     </div>
                     <div class="modal-body" id='modal-update'>
-                    <form id="taskForm" name="taskForm">
+                    <form id="updatetaskForm" name="updateTaskForm">
                         <div class="form-group">
-                        <label for="taskTitle">Title</label>
-                        <input type="text" class="form-control" id="taskTitle" value=${obj[1]}>
+                        <label for="updateTaskTitle">Title</label>
+                        <input type="text" class="form-control" id="updateTaskTitle" value=${obj[1]}>
                         </div>
                         <div class="form-group">
-                        <label for="taskDesc">Description</label>
-                        <input type="text" class="form-control" id="taskDesc" value=${obj[2]}>
+                        <label for="updateTaskDesc">Description</label>
+                        <input type="text" class="form-control" id="updateTaskDesc" value=${obj[2]}>
                         </div>
                         <div class="form-group">
-                          <label for="taskPriority">Priority</label>
-                          <select class="form-control" id="taskPriority">
+                          <label for="updateTaskPriority">Priority</label>
+                          <select class="form-control" id="updateTaskPriority">
                             <option>Low</option>
                             <option>Normal</option>
                             <option>High</option>
@@ -156,17 +156,17 @@ const executeOddClick = () => {
                         </div>
 
                         <div class="form-group">
-                          <label for="taskDate">Date</label>
-                          <input class="form-control" type="date" value=${obj[5]} id="taskDate">
+                          <label for="UpdateTaskDate">Date</label>
+                          <input class="form-control" type="date" value=${obj[5]} id="UpdateTaskDate">
                         </div>
 
                         <div class="form-group">
-                          <label for="taskNotes">Notes</label>
-                          <textarea class="form-control" id="taskNotes" rows="3" >${obj[4]}</textarea>
+                          <label for="updateTaskNotes">Notes</label>
+                          <textarea class="form-control" id="updateTaskNotes" rows="3" >${obj[4]}</textarea>
                         </div>
                         <div class="modal-footer">
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <input type="submit" class="btn btn-primary" value="Update">
+                          <input type="submit" class="btn btn-primary" name="updateTask" value="Update">
                         </div>
                       </form>      
                     </div>
@@ -184,7 +184,7 @@ const executeOddClick = () => {
         });
 
         let deleteTask = document.querySelectorAll('.delete');
-        deleteTask.forEach((obj, idx) => {
+        deleteTask.forEach((obj) => {
           obj.addEventListener('click', () => {
             taskListValues.splice(obj.id, 1);
             localStorage.setItem('todo', JSON.stringify(taskListValues));
