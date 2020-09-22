@@ -76,6 +76,7 @@ addProjectForm.onsubmit = (e) => {
   newProjectArray = newProject.addProject();
   addAndDisplayProjectArray = addAndDisplay;
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray)
+  addProjectForm.reset();
 }
 let projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
@@ -104,7 +105,6 @@ const executeOddClick = () => {
     let allProjectIds = document.querySelectorAll('#projectId');
     allProjectIds.forEach((obj, idx) => {
       obj.addEventListener('click', () => {
-        if(obj[0] === projectTitle) {
           projectTitle = obj.innerHTML;
           let projectTitleDivForTask = document.createElement('div');
           projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
@@ -114,11 +114,14 @@ const executeOddClick = () => {
           document.querySelector('.taskContainer').style.display = 'flex';
           let taskListValues = addAndDisplayTaskArray.displayTasks();
           taskListValues.forEach((obj, idx) => {
-            let taskList = document.createElement('div');
-            taskList.setAttribute('id', 'taskList');
-            taskList.setAttribute('class', 'taskList');
-            taskList.classList.remove('taskList');
-            taskList.innerHTML = `
+            console.log(obj);
+            if(obj[0] === projectTitle) {
+
+              let taskList = document.createElement('div');
+              taskList.setAttribute('id', 'taskList');
+              taskList.setAttribute('class', 'taskList');
+              taskList.classList.remove('taskList');
+              taskList.innerHTML = `
               <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
               <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
@@ -183,17 +186,26 @@ const executeOddClick = () => {
               </div>
            <br> `;
 
-            projectTitleDivForTaskParentDiv.appendChild(taskList);
-            // projectTitleDivForTaskParentDiv.appendChild(taskList);
-            // projectTitleDivForTaskParentDiv.appendChild(taskList);
+              projectTitleDivForTaskParentDiv.appendChild(taskList);
+              // projectTitleDivForTaskParentDiv.appendChild(taskList);
+              // projectTitleDivForTaskParentDiv.appendChild(taskList);
 
-            // document.getElementById('delete').addEventListener('click', () => {
-            //   taskListValues.splice(idx, 1);
-            //   console.log(idx);
-            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
-            // })
+              // document.getElementById('delete').addEventListener('click', () => {
+              //   taskListValues.splice(idx, 1);
+              //   console.log(idx);
+              //   localStorage.setItem('todo', JSON.stringify(taskListValues));
+              // })
+            }
 
           });
+
+
+
+
+
+
+
+
           let deleteTask = document.querySelectorAll('.delete');
           deleteTask.forEach((obj, idx) => {
             obj.addEventListener('click', () => {
@@ -202,8 +214,7 @@ const executeOddClick = () => {
               // localStorage.setItem('todo', JSON.stringify(taskListValues));
             })
           });
-        }
-      });
+        });
     });
 
     document.getElementById('taskAddC').addEventListener('click', () => {
