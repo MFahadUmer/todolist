@@ -81,6 +81,8 @@ var times = 0;
 const executeOddClick = () => {
   times++
   if (times % 2 != 0) {
+    var addTaskDiv = document.getElementById('right-body')
+    addTaskDiv.style.cssText = 'display:block;'
     var parentDiv = document.getElementById('collapseExample')
     let projectListDiv = document.createElement('div')
     projectListDiv.setAttribute('id', 'projectList')
@@ -222,7 +224,8 @@ document.getElementById('dropDown').addEventListener('click', () => {
 
     var myDoubingDiv = document.getElementById("projectList");
     myDoubingDiv.remove();
-
+    var removeTask = document.getElementById('right-body')
+    removeTask.style.cssText = 'display:none;'
   }
 });
 
