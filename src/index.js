@@ -107,7 +107,6 @@ const executeOddClick = () => {
         let taskListValues = addAndDisplayTaskArray.displayTasks();
         taskListValues.forEach((obj, idx) => {
           if (obj[0] === projectTitle) {
-
             let taskList = document.createElement('div');
             taskList.setAttribute('id', 'taskList');
             taskList.setAttribute('class', 'taskList');
@@ -125,6 +124,7 @@ const executeOddClick = () => {
               <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
                 <i class="fas fa-pencil-alt"></i>
               </button>
+
               <div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                   <div class="modal-content">
@@ -176,11 +176,8 @@ const executeOddClick = () => {
               </div>
               </div>
            <br> `;
-
             projectTitleDivForTaskParentDiv.appendChild(taskList);
-
           }
-
         });
 
         let deleteTask = document.querySelectorAll('.delete');
@@ -198,7 +195,6 @@ const executeOddClick = () => {
     });
   }
 }
-
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
 

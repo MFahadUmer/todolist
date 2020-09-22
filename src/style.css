@@ -15,7 +15,7 @@
 }
 
 .projectStyles {
-  color: brown;
+  color: black;
 }
 
 .body-class {
@@ -24,7 +24,7 @@
 
 .left-body {
   width: 30%;
-  background-color: bisque;
+  background-color: white;
 }
 
 .right-body {
@@ -172,7 +172,7 @@ select {
 }
 
 .dropdownbuttonforborder:hover:first-child {
-  border-bottom: 1px solid black;
+  border: none;
 }
 
 .dropDownDivButtons:hover {
@@ -238,4 +238,9 @@ select {
 .edit {
   border: none;
   background-color: white;
+}
+
+.delete {
+  background-color: white;
+  border: none;
 }

@@ -10,7 +10,6 @@ const tasks = (() => {
       return [project, title, description, priority, notes, duedate];
     };
   }
-
   return {
     toDoItems
   }
