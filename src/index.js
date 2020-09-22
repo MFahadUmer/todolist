@@ -81,6 +81,7 @@ var times = 0;
 const executeOddClick = () => {
   times++
   if (times % 2 != 0) {
+    document.getElementById("fa-angle").style.cssText = "transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;";
     var addTaskDiv = document.getElementById('right-body')
     addTaskDiv.style.cssText = 'display:block;'
     var parentDiv = document.getElementById('collapseExample')
@@ -207,21 +208,15 @@ document.getElementById('dropDown').addEventListener('click', () => {
   let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
 
-document.getElementById('dropDown').addEventListener('click', () => {
-  console.log('yees')
-  document.getElementById("fa-angle").style.cssText = "transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;";
-});
-
 document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
 });
 
-//remember to fix
 var timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
   timesClicked++
   if (timesClicked % 2 == 0) {
-
+    document.getElementById("fa-angle").style.cssText = "transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(0deg);";
     var myDoubingDiv = document.getElementById("projectList");
     myDoubingDiv.remove();
     var removeTask = document.getElementById('right-body')
