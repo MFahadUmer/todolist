@@ -120,7 +120,7 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
               <div>
-              <button class="delete" id='delete${idx}'><i class="fas fa-trash"></i></button>
+              <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
               
               <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
                 <i class="fas fa-pencil-alt"></i>
@@ -186,15 +186,7 @@ const executeOddClick = () => {
         let deleteTask = document.querySelectorAll('.delete');
         deleteTask.forEach((obj, idx) => {
           obj.addEventListener('click', () => {
-            let idDelete = obj.id
-            var arr = idDelete.split('')
-            var deleteIndex = parseInt(arr[arr.length - 1])
-            delete taskListValues[deleteIndex]
-            var array = taskListValues
-            var filtered = array.filter(function (el) {
-              return el != null;
-            });
-            taskListValues = filtered
+            taskListValues.splice(obj.id, 1);
             localStorage.setItem('todo', JSON.stringify(taskListValues));
           })
         });
