@@ -81,7 +81,10 @@ var times = 0;
 const executeOddClick = () => {
   times++
   if (times % 2 != 0) {
-    let projectListDiv = document.getElementById("projectList");
+    var parentDiv = document.getElementById('collapseExample')
+    let projectListDiv = document.createElement('div')
+    projectListDiv.setAttribute('id', 'projectList')
+    parentDiv.appendChild(projectListDiv)
     projectListDisplay.forEach((obj, idx) => {
       let projectListElem = document.createElement("p");
       projectListElem.setAttribute('id', `projectId`);
@@ -204,7 +207,7 @@ document.getElementById('dropDown').addEventListener('click', () => {
 
 document.getElementById('dropDown').addEventListener('click', () => {
   console.log('yees')
-  document.getElementById("fa-angle").style.cssText = "transition: all 0.5s; transitionDuration = 0.5s; transform: rotate(90deg); margin-top: 10px;";
+  document.getElementById("fa-angle").style.cssText = "transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;";
 });
 
 document.getElementById('button-dropdown').addEventListener('click', () => {
@@ -216,7 +219,10 @@ var timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
   timesClicked++
   if (timesClicked % 2 == 0) {
-    document.location.reload();
+
+    var myDoubingDiv = document.getElementById("projectList");
+    myDoubingDiv.remove();
+
   }
 });
 

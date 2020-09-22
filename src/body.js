@@ -25,8 +25,6 @@ const bodyModule = (() => {
       </div>
       <div id='reload'>
         <div class="collapse" id="collapseExample">
-          <div id="projectList" class="card card-body">
-          </div>
         </div>
       </div>`;
     left.appendChild(project);
