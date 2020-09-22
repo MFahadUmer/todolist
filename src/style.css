@@ -83,11 +83,12 @@
 
 .fa-angle-right {
   padding-top: 10px;
+  margin-right: 5px;
+  cursor: pointer;
 }
 
-.angle-down {
+.fa-angel {
   padding-top: 10px;
-  transform: rotate(90deg);
 }
 
 .addProjectIcon {
@@ -111,6 +112,7 @@
 .project-p {
   font-weight: bold;
   font-size: 1.1em;
+  padding-top: 7px;
 }
 
 .black {
@@ -177,7 +179,6 @@ select {
   background-color: burlywood;
 }
 
-
 .task-form-class {
   display: none;
 }
@@ -218,7 +219,8 @@ select {
   background-color: aqua;
 }
 
-.tasksClass, #task-form-id {
+.tasksClass,
+#task-form-id {
   padding: 1em;
 }
 
@@ -226,7 +228,10 @@ select {
   font-size: 20px;
 }
 
-.fa-trash, .fa-trash:hover, .fa-pencil-alt, .fa-pencil-alt:hover {
+.fa-trash,
+.fa-trash:hover,
+.fa-pencil-alt,
+.fa-pencil-alt:hover {
   cursor: pointer;
 }
 

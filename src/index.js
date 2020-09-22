@@ -206,6 +206,11 @@ document.getElementById('dropDown').addEventListener('click', () => {
   let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
 
+document.getElementById('dropDown').addEventListener('click', () => {
+  console.log('yees')
+  document.getElementById("fa-angle").style.cssText = "transform: rotate(90deg); margin-top: 10px;";
+});
+
 document.getElementById('button-dropdown').addEventListener('click', () => {
   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
 });

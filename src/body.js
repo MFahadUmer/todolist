@@ -16,7 +16,7 @@ const bodyModule = (() => {
         <div class='d-flex align-items-center'>
           <p><a id="dropDown" data-toggle="collapse" href="#collapseExample" role="button" aria-expanded="false"
               aria-controls="collapseExample">
-              <i class="fas fa-angle-right fa-2x"></i>
+              <i class="fas fa-angle-right fa-2x" id="fa-angle"></i>
             </a></p>
           <p class='project-p'>Project</p>
         </div>
