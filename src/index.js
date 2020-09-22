@@ -204,7 +204,7 @@ document.getElementById('dropDown').addEventListener('click', () => {
 
 document.getElementById('dropDown').addEventListener('click', () => {
   console.log('yees')
-  document.getElementById("fa-angle").style.cssText = "transform: rotate(90deg); margin-top: 10px;";
+  document.getElementById("fa-angle").style.cssText = "transition: all 0.5s; transitionDuration = 0.5s; transform: rotate(90deg); margin-top: 10px;";
 });
 
 document.getElementById('button-dropdown').addEventListener('click', () => {
