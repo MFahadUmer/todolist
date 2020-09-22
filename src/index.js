@@ -29,13 +29,6 @@ let addAndDisplayProjectArray = addAndDisplay;
 let projectlist2;
 let addAndDisplayTaskArray = addAndDisplay;
 
-function deleteTask() {
-  console.log("Yessssssssssss");
-}
-// var deleteTask = (idx) => {
-//   console.log(idx);
-// }
-
 const defaultTask = () => {
   let newTask = tasks
   newTask.toDoItems('Welcome', 'Go shopping', 'Buy milk and honey', 'Urgent', 'Buy items to restoke shelf', '08/18/2020');
@@ -95,7 +88,6 @@ const executeOddClick = () => {
       projectListElem.addEventListener('click', () => {
         projectTitle = obj[0];
       });
-      console.log(obj);
       projectListElem.innerHTML = `${obj[0]}`;
       projectListElem.style.backgroundColor = `${obj[1]}`;
       projectListElem.classList.add('projectListELemParagraph');
@@ -105,23 +97,22 @@ const executeOddClick = () => {
     let allProjectIds = document.querySelectorAll('#projectId');
     allProjectIds.forEach((obj, idx) => {
       obj.addEventListener('click', () => {
-          projectTitle = obj.innerHTML;
-          let projectTitleDivForTask = document.createElement('div');
-          projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
-          let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
-          projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
-          projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
-          document.querySelector('.taskContainer').style.display = 'flex';
-          let taskListValues = addAndDisplayTaskArray.displayTasks();
-          taskListValues.forEach((obj, idx) => {
-            console.log(obj);
-            if(obj[0] === projectTitle) {
+        projectTitle = obj.innerHTML;
+        let projectTitleDivForTask = document.createElement('div');
+        projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
+        let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+        projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
+        projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
+        document.querySelector('.taskContainer').style.display = 'flex';
+        let taskListValues = addAndDisplayTaskArray.displayTasks();
+        taskListValues.forEach((obj, idx) => {
+          if (obj[0] === projectTitle) {
 
-              let taskList = document.createElement('div');
-              taskList.setAttribute('id', 'taskList');
-              taskList.setAttribute('class', 'taskList');
-              taskList.classList.remove('taskList');
-              taskList.innerHTML = `
+            let taskList = document.createElement('div');
+            taskList.setAttribute('id', 'taskList');
+            taskList.setAttribute('class', 'taskList');
+            taskList.classList.remove('taskList');
+            taskList.innerHTML = `
               <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
               <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
@@ -129,7 +120,7 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[5]}</span></div>
               <div class='d-flex flex-row'>
               <div>
-              <button class="delete" id='delete'><i class="fas fa-trash"></i></button>
+              <button class="delete" id='delete${idx}'><i class="fas fa-trash"></i></button>
               
               <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
                 <i class="fas fa-pencil-alt"></i>
@@ -186,29 +177,32 @@ const executeOddClick = () => {
               </div>
            <br> `;
 
-              projectTitleDivForTaskParentDiv.appendChild(taskList);
-              // projectTitleDivForTaskParentDiv.appendChild(taskList);
-              // projectTitleDivForTaskParentDiv.appendChild(taskList);
+            projectTitleDivForTaskParentDiv.appendChild(taskList);
+            // projectTitleDivForTaskParentDiv.appendChild(taskList);
+            // projectTitleDivForTaskParentDiv.appendChild(taskList);
 
-              // document.getElementById('delete').addEventListener('click', () => {
-              //   taskListValues.splice(idx, 1);
-              //   console.log(idx);
-              //   localStorage.setItem('todo', JSON.stringify(taskListValues));
-              // })
-            }
+            // document.getElementById('delete').addEventListener('click', () => {
+            //   taskListValues.splice(idx, 1);
+            //   console.log(idx);
+            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
+            // })
+          }
 
-          });
-
-          let deleteTask = document.querySelectorAll('.delete');
-          deleteTask.forEach((obj, idx) => {
-            obj.addEventListener('click', () => {
-              taskListValues.splice(taskListValues[idx+1], 1);
-              console.log(taskListValues)
-              console.log(idx);
-              localStorage.setItem('todo', JSON.stringify(taskListValues));
-            })
-          });
         });
+
+        let deleteTask = document.querySelectorAll('.delete');
+        deleteTask.forEach((obj, idx) => {
+          obj.addEventListener('click', () => {
+            let idDelete = obj.id
+            console.log(idDelete.split(''))
+           console.log(parseInt(idDelete[-1]))
+            //   taskListValues.splice(taskListValues[idx + 1], 1);
+            //   console.log(taskListValues)
+              console.log(idx);
+            //   localStorage.setItem('todo', JSON.stringify(taskListValues));
+          })
+        });
+      });
     });
 
     document.getElementById('taskAddC').addEventListener('click', () => {
@@ -217,7 +211,6 @@ const executeOddClick = () => {
   }
 }
 
-document.querySelectorAll('.delete').forEach(item => { item.addEventListener('click', event => { console.log("Uemsd") }) })
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
 
