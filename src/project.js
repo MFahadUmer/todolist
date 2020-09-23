@@ -4,8 +4,8 @@ const project = (() => {
     this.projectColor = color;
     this.addProject = function () {
       return [this.projectName, this.projectColor];
-    };
-  };
+    }
+  }
   return {
     projects,
   };

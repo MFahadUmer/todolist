@@ -6,7 +6,7 @@ const navModule = (() => {
     const leftDiv = document.createElement('div');
     leftDiv.setAttribute('id', 'left-container');
     const elem = document.createElement('h1');
-    const text = document.createTextNode("Todolist");
+    const text = document.createTextNode('Todolist');
     const rightDiv = document.createElement('div');
     rightDiv.setAttribute('id', 'right-container');
     const fastTask = document.createElement('div');
@@ -27,4 +27,4 @@ const navModule = (() => {
   };
   document.querySelector('.nav').appendChild(navBar());
 })();
-export default navModule
+export default navModule;

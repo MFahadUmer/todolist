@@ -8,7 +8,7 @@ const modal = (() => {
   addProjectIcon.innerHTML = '+';
   addProjectDiv.appendChild(addProjectIcon);
 
-  const modal = document.createElement("div");
+  const modal = document.createElement('div');
   modal.setAttribute('class', 'modal fade');
   modal.setAttribute('id', 'projectModal');
   modal.setAttribute('tabindex', '-1');
@@ -71,6 +71,6 @@ const modal = (() => {
   </div>
   </div>`;
   addProjectDiv.appendChild(modal);
-  return {}
+  return {};
 })();
-export default modal
+export default modal;

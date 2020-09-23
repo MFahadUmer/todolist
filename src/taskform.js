@@ -5,8 +5,8 @@ const taskFormModule = (() => {
     taskAddPlusC.setAttribute('id', 'taskAddC');
     taskAddPlusC.innerHTML = `<div>
       <button id='add-id' class='add-class'>+</button></div>
-      <div class='ml-2'><p class='add-task-text'>Add task</p></div>`
-    let right =document.getElementById('right-body');
+      <div class='ml-2'><p class='add-task-text'>Add task</p></div>`;
+    const right = document.getElementById('right-body');
     right.appendChild(taskAddPlusC);
     const taskFormContainer = document.createElement('div');
     taskFormContainer.setAttribute('class', 'task-form-class');
@@ -44,7 +44,7 @@ const taskFormModule = (() => {
       </div>
     </form>`;
     return taskFormContainer;
-  }
+  };
   document.getElementById('right-body').appendChild(createTaskForm());
 })();
-export default taskFormModule
+export default taskFormModule;

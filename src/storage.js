@@ -33,7 +33,7 @@ const addAndDisplay = (() => {
   };
 
   return {
-    addtasks, displayTasks, addDisplayproject, displayProject
+    addtasks, displayTasks, addDisplayproject, displayProject,
   };
 })();
 export default addAndDisplay;
