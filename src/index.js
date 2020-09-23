@@ -123,62 +123,13 @@ const executeOddClick = () => {
               <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
               <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
               <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
-              <div class='d-flex flex-row'>
+              <div id="taskListOperations" class='d-flex flex-row'>
               <div>
               <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
               
-              <button type="button" class="edit mr-4" data-toggle="modal" data-target="#updateTaskModal">
+              <button type="button" id="${idx}" class="update" data-toggle="modal" data-target="#updateTaskModal">
                 <i class="fas fa-pencil-alt"></i>
               </button>
-
-              <div class="modal fade" id="updateTaskModal" tabindex="-1" role="dialog" aria-labelledby="updateTaskModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h5 class="modal-title" id="updateTaskModalLabel">Modal Update</h5>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id='modal-update'>
-                    <form id="updatetaskForm" name="updateTaskForm">
-                        <div class="form-group">
-                        <label for="updateTaskTitle">Title</label>
-                        <input type="text" class="form-control" id="updateTaskTitle" value=${obj[1]}>
-                        </div>
-                        <div class="form-group">
-                        <label for="updateTaskDesc">Description</label>
-                        <input type="text" class="form-control" id="updateTaskDesc" value=${obj[2]}>
-                        </div>
-                        <div class="form-group">
-                          <label for="updateTaskPriority">Priority</label>
-                          <select class="form-control" id="updateTaskPriority">
-                            <option>Low</option>
-                            <option>Normal</option>
-                            <option>High</option>
-                            <option>Urgent</option>
-                            <option>Important</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="UpdateTaskDate">Date</label>
-                          <input class="form-control" type="date" value=${obj[5]} id="UpdateTaskDate">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="updateTaskNotes">Notes</label>
-                          <textarea class="form-control" id="updateTaskNotes" rows="3" >${obj[4]}</textarea>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <input type="submit" class="btn btn-primary" name="updateTask" value="Update">
-                        </div>
-                      </form>      
-                    </div>
-                  </div>
-                </div>
-              </div>
               </div>
               </div>
            <br> `;
@@ -193,6 +144,66 @@ const executeOddClick = () => {
             localStorage.setItem('todo', JSON.stringify(taskListValues));
           })
         });
+        let updateTask = document.querySelectorAll('.update');
+        updateTask.forEach((obj)=>{
+          obj.addEventListener('click', ()=> {
+            let updateTaskModal = document.createElement('div');
+            updateTaskModal.setAttribute('class', 'modal fade');
+            updateTaskModal.setAttribute('id', 'updateTaskModal');
+            updateTaskModal.setAttribute('tabindex', '-1');
+            updateTaskModal.setAttribute('role', 'dialog');
+            updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
+            updateTaskModal.setAttribute('aria-hidden', 'true');
+            updateTaskModal.innerHTML = `
+           <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h3 class="modal-title text-success" id="updateTaskModalLabel"><span class="text-danger">Project =></span> ${taskListValues[obj.id][0]}</h3>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                    <div class="modal-body" id='modal-update'>
+                    <form id="updateTaskForm" name="updateTaskForm">
+                        <div class="form-group">
+                        <label for="updateTaskTitle">Title</label>
+                        <input type="text" class="form-control" id="updateTaskTitle" value=\"${taskListValues[obj.id][1]}\">
+                        </div>
+                        <div class="form-group">
+                        <label for="updateTaskDesc">Description</label>
+                        <input type="text" class="form-control" id="updateTaskDesc" value=\"${taskListValues[obj.id][2]}\">
+                        </div>
+                        <div class="form-group">
+                          <label for="updateTaskPriority">Priority</label>
+                          <select class="form-control" id="updateTaskPriority">
+                            <option>Low</option>
+                            <option>Normal</option>
+                            <option>High</option>
+                            <option>Urgent</option>
+                            <option>Important</option>
+                          </select>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="UpdateTaskDate">Date</label>
+                          <input class="form-control" type="date" value=\"${taskListValues[obj.id][5]}\" id="UpdateTaskDate">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="updateTaskNotes">Notes</label>
+                          <textarea class="form-control" id="updateTaskNotes" rows="3" >${taskListValues[obj.id][4]}</textarea>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                          <input type="submit" class="btn btn-primary" name="updateTaskForm" value="Update">
+                        </div>
+                      </form>      
+                    </div>
+                  </div>
+                </div>`;
+            document.getElementById('taskListOperations').appendChild(updateTaskModal);
+          })
+        })
       });
     });
 
@@ -222,7 +233,3 @@ document.getElementById('dropDown').addEventListener('click', () => {
     removeTask.style.cssText = 'display:none;'
   }
 });
-
-document.getElementById('submit-reload').addEventListener('click', () => {
-  window.location.reload();
-})
