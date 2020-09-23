@@ -48,7 +48,7 @@ In this project, the following features were done;
 
 ## How to install
 
-Starting out with todolist is easy, git clone the project and open from vscode. Run npm install and open index from browser, preferably chrome. That's it.
+Starting out with todolist is easy, git clone the project and open from vscode. Run npm install and open index from chrome. That's it.
 
 ## Authors
 
