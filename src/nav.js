@@ -26,7 +26,5 @@ const navModule = (() => {
     return nav
   }
   document.querySelector('.nav').appendChild(navBar());
-
 })();
-
 export default navModule

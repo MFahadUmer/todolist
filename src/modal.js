@@ -34,7 +34,6 @@ const modal = (() => {
       </div>
       <div class="form-group">
         <label for="project">Project color</label>
-
         <div class="button-dropdown border rounded" id='button-dropdown'>
         <button  class=" form-control border-0 dropdownbuttonforborder buttonChange" type="button">
           <div class='d-flex align-items-center'>
@@ -49,7 +48,6 @@ const modal = (() => {
               <div class=''>Red</div>
             </div>
           </button>
-          
           <button class="dropDownDivButtons border-0 form-control close-dropdown" type="button" id="addnew" value="green">
             <div class='d-flex align-items-center'>
               <div class="green"></div>
@@ -66,17 +64,13 @@ const modal = (() => {
       </div>
       </div>
     </div>
-
     <div class="modal-footer">
       <input type="submit" name="addProjectForm" id='submit-reload'>
     </div>
     </form>
   </div>
   </div>`;
-
   addProjectDiv.appendChild(modal);
-
   return {}
 })();
-
 export default modal

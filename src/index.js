@@ -203,7 +203,6 @@ const executeOddClick = () => {
 }
 
 document.getElementById("dropDown").addEventListener("click", executeOddClick)
-
 document.getElementById('dropDown').addEventListener('click', () => {
   let projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });

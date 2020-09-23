@@ -21,7 +21,6 @@ const taskFormModule = (() => {
       <label for="taskDesc">Description</label>
       <input type="text" class="form-control" id="taskDesc" placeholder="description">
       </div>
-
       <div class="form-group">
         <label for="taskPriority">Priority</label>
         <select class="form-control" id="taskPriority">
@@ -32,28 +31,20 @@ const taskFormModule = (() => {
           <option>Important</option>
         </select>
       </div>
-
       <div class="form-group">
         <label for="taskDate">Date</label>
         <input class="form-control" type="date" value="2011-08-19" id="taskDate">
       </div>
-
       <div class="form-group">
         <label for="taskNotes">Notes</label>
         <textarea class="form-control" id="taskNotes" rows="3"></textarea>
       </div>
-
       <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
         <input type="submit" class="btn btn-primary" value="Add Task">
       </div>
     </form>`;
-
-
     return taskFormContainer
   }
   document.getElementById('right-body').appendChild(createTaskForm());
-
 })();
-
 export default taskFormModule

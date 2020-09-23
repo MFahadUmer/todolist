@@ -25,6 +25,5 @@ const updateModal = (() => {
       </div>
     </div>
 </div>`;
-
 })();
 export default updateModal

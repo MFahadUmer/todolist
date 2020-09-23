@@ -13,7 +13,5 @@ const tasks = (() => {
   return {
     toDoItems
   }
-
 })();
-
 export default tasks;

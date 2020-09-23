@@ -9,7 +9,5 @@ const project = (() => {
   return {
     projects
   }
-
 })();
-
 export default project;

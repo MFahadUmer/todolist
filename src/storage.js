@@ -1,7 +1,6 @@
 const myToDoList = localStorage.getItem('todo')
   ? JSON.parse(localStorage.getItem('todo'))
   : [];
-
 localStorage.setItem('todo', JSON.stringify(myToDoList));
 JSON.parse(localStorage.getItem('todo'));
 
@@ -36,7 +35,5 @@ const addAndDisplay = (() => {
   return {
     addtasks, displayTasks, addDisplayproject, displayProject
   }
-
 })();
-
 export default addAndDisplay;

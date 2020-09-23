@@ -34,12 +34,8 @@ const bodyModule = (() => {
     right.appendChild(task);
     toDoBody.appendChild(left);
     toDoBody.appendChild(right);
-
     return toDoBody
   }
-
   document.querySelector('.body-container').appendChild(createBody());
-
 })();
-
 export default bodyModule

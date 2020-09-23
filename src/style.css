@@ -244,3 +244,7 @@ select {
   background-color: white;
   border: none;
 }
+
+#projectId {
+  cursor: pointer;
+}
