@@ -235,7 +235,7 @@ select {
   cursor: pointer;
 }
 
-.edit {
+.update {
   border: none;
   background-color: white;
 }
