@@ -40,28 +40,6 @@ const defaultTask = () => {
   document.getElementById('task-form-id').classList.add('task-form-class');
 };
 
-const createSession = () => {
-  sessionStorage.setItem("lastname", "Smith");
-  console.log(sessionStorage)
-}
-createSession()
-
-taskForm.onsubmit = (e) => {
-  e.preventDefault();
-  const taskTitle = document.getElementById('taskTitle').value;
-  const taskDesc = document.getElementById('taskDesc').value;
-  const taskPriority = document.getElementById('taskPriority').value;
-  const taskDate = document.getElementById('taskDate').value;
-  const taskNotes = document.getElementById('taskNotes').value;
-  document.getElementById('taskForm').reset();
-  const newTask = tasks;
-  newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
-  const newTaskArray = newTask.addTasks();
-  addAndDisplayTaskArray.addtasks(newTaskArray);
-  addAndDisplayTaskArray.displayTasks();
-  document.getElementById('task-form-id').classList.add('task-form-class');
-};
-
 const defaultProject = () => {
   const defaultProjectDetails = ['Welcome', 'violet'];
   newProject.projects(defaultProjectDetails[0], defaultProjectDetails[1]);
@@ -70,15 +48,38 @@ const defaultProject = () => {
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
 };
 
-
-
 const projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
   defaultProject();
   defaultTask();
 }
 
-function dummy() {
+const createTask = (obj) => {
+  let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+  const taskList = document.createElement('div');
+  taskList.setAttribute('id', 'taskList');
+  taskList.setAttribute('class', 'taskList');
+  taskList.classList.remove('taskList');
+  taskList.innerHTML = `
+    <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
+    <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
+    <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
+    <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+    <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+    <div id="taskListOperations" class='d-flex flex-row'>
+    <div>
+    <button class="delete" id=''><i class="fas fa-trash"></i></button>
+    
+    <button type="button" id='' class="update" data-toggle="modal" data-target="#updateTaskModal">
+      <i class="fas fa-pencil-alt"></i>
+    </button>
+    </div>
+    </div>
+     <br> `;
+  projectTitleDivForTaskParentDiv.appendChild(taskList);
+}
+
+const displayCreateProject = () => {
   const parentDiv = document.getElementById('collapseExample');
   const projectListDiv = document.createElement('div');
   projectListDiv.setAttribute('id', 'projectList');
@@ -107,29 +108,9 @@ function dummy() {
       const taskListValues = addAndDisplayTaskArray.displayTasks();
       taskListValues.forEach((obj, idx) => {
         if (obj[0] === projectTitle) {
-          const taskList = document.createElement('div');
-          taskList.setAttribute('id', 'taskList');
-          taskList.setAttribute('class', 'taskList');
-          taskList.classList.remove('taskList');
-          taskList.innerHTML = `
-            <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
-            <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
-            <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-            <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
-            <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
-            <div id="taskListOperations" class='d-flex flex-row'>
-            <div>
-            <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
-            
-            <button type="button" id="${idx}" class="update" data-toggle="modal" data-target="#updateTaskModal">
-              <i class="fas fa-pencil-alt"></i>
-            </button>
-            </div>
-            </div>
-         <br> `;
-          projectTitleDivForTaskParentDiv.appendChild(taskList);
+          createTask(obj);
         }
-      });
+      })
 
       const deleteTask = document.querySelectorAll('.delete');
       deleteTask.forEach((obj) => {
@@ -209,9 +190,7 @@ const executeOddClick = () => {
     document.getElementById('fa-angle').style.cssText = 'transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;';
     const addTaskDiv = document.getElementById('right-body');
     addTaskDiv.style.cssText = 'display:block;';
-    dummy()
-
-
+    displayCreateProject()
     document.getElementById('taskAddC').addEventListener('click', () => {
       document.getElementById('task-form-id').classList.remove('task-form-class');
     });
@@ -229,17 +208,32 @@ addProjectForm.onsubmit = (e) => {
   document.getElementById('projectList').remove();
   document.getElementById('addProjectForm').reset();
   $('#projectModal').modal('hide');
-  dummy();
+  displayCreateProject();
+};
+
+taskForm.onsubmit = (e) => {
+  e.preventDefault();
+  const taskTitle = document.getElementById('taskTitle').value;
+  const taskDesc = document.getElementById('taskDesc').value;
+  const taskPriority = document.getElementById('taskPriority').value;
+  const taskDate = document.getElementById('taskDate').value;
+  const taskNotes = document.getElementById('taskNotes').value;
+  document.getElementById('taskForm').reset();
+  const newTask = tasks;
+  newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
+  const newTaskArray = newTask.addTasks();
+  addAndDisplayTaskArray.addtasks(newTaskArray);
+  addAndDisplayTaskArray.displayTasks();
+  document.getElementById('task-form-id').classList.add('task-form-class');
+  document.getElementById('taskList').remove()
+  createTask()
+
 };
 
 document.getElementById('dropDown').addEventListener('click', executeOddClick);
 document.getElementById('dropDown').addEventListener('click', () => {
   const projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
-
-// document.getElementById('button-dropdown').addEventListener('click', () => {
-//   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
-// });
 
 let timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
@@ -253,11 +247,5 @@ document.getElementById('dropDown').addEventListener('click', () => {
   }
 });
 
-const thereIsSession = () => {
-  if (sessionStorage) {
-    console.log(sessionStorage)
-  }
-}
-thereIsSession()
 /* eslint-enable no-unused-vars, prefer-destructuring */
 /* eslint-enable no-undef, import/no-extraneous-dependencies */
