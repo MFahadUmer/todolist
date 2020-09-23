@@ -197,7 +197,7 @@ const executeOddClick = () => {
                           <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                           <input type="submit" class="btn btn-primary" name="updateTaskForm" value="Update">
                         </div>
-                      </form>      
+                      </form> 
                     </div>
                   </div>
                 </div>`;
