@@ -40,6 +40,12 @@ const defaultTask = () => {
   document.getElementById('task-form-id').classList.add('task-form-class');
 };
 
+const createSession = () => {
+  sessionStorage.setItem("lastname", "Smith");
+  console.log(sessionStorage)
+}
+createSession()
+
 taskForm.onsubmit = (e) => {
   e.preventDefault();
   const taskTitle = document.getElementById('taskTitle').value;
@@ -64,20 +70,136 @@ const defaultProject = () => {
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
 };
 
-addProjectForm.onsubmit = (e) => {
-  e.preventDefault();
-  const projectTitle = document.getElementById('project-form-id').value;
-  const projectColor = colorModule.dropObj[0];
-  newProject.projects(projectTitle, projectColor);
-  newProjectArray = newProject.addProject();
-  addAndDisplayProjectArray = addAndDisplay;
-  projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
-  window.location.reload();
-};
+
+
 const projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
   defaultProject();
   defaultTask();
+}
+
+function dummy() {
+  const parentDiv = document.getElementById('collapseExample');
+  const projectListDiv = document.createElement('div');
+  projectListDiv.setAttribute('id', 'projectList');
+  parentDiv.appendChild(projectListDiv);
+  projectListDisplay.forEach((obj) => {
+    const projectListElem = document.createElement('p');
+    projectListElem.setAttribute('id', 'projectId');
+    projectListElem.addEventListener('click', () => {
+      projectTitle = obj[0];
+    });
+    projectListElem.innerHTML = `${obj[0]}`;
+    projectListElem.style.backgroundColor = `${obj[1]}`;
+    projectListElem.classList.add('projectListELemParagraph');
+    projectListDiv.appendChild(projectListElem);
+  });
+  const allProjectIds = document.querySelectorAll('#projectId');
+  allProjectIds.forEach((obj) => {
+    obj.addEventListener('click', () => {
+      projectTitle = obj.innerHTML;
+      const projectTitleDivForTask = document.createElement('div');
+      projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
+      const projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+      projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
+      projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
+      document.querySelector('.taskContainer').style.display = 'flex';
+      const taskListValues = addAndDisplayTaskArray.displayTasks();
+      taskListValues.forEach((obj, idx) => {
+        if (obj[0] === projectTitle) {
+          const taskList = document.createElement('div');
+          taskList.setAttribute('id', 'taskList');
+          taskList.setAttribute('class', 'taskList');
+          taskList.classList.remove('taskList');
+          taskList.innerHTML = `
+            <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
+            <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
+            <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
+            <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+            <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+            <div id="taskListOperations" class='d-flex flex-row'>
+            <div>
+            <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
+            
+            <button type="button" id="${idx}" class="update" data-toggle="modal" data-target="#updateTaskModal">
+              <i class="fas fa-pencil-alt"></i>
+            </button>
+            </div>
+            </div>
+         <br> `;
+          projectTitleDivForTaskParentDiv.appendChild(taskList);
+        }
+      });
+
+      const deleteTask = document.querySelectorAll('.delete');
+      deleteTask.forEach((obj) => {
+        obj.addEventListener('click', () => {
+          taskListValues.splice(obj.id, 1);
+          localStorage.setItem('todo', JSON.stringify(taskListValues));
+        });
+      });
+      const updateTask = document.querySelectorAll('.update');
+      updateTask.forEach((obj) => {
+        obj.addEventListener('click', () => {
+          const updateTaskModal = document.createElement('div');
+          updateTaskModal.setAttribute('class', 'modal fade');
+          updateTaskModal.setAttribute('id', 'updateTaskModal');
+          updateTaskModal.setAttribute('tabindex', '-1');
+          updateTaskModal.setAttribute('role', 'dialog');
+          updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
+          updateTaskModal.setAttribute('aria-hidden', 'true');
+          updateTaskModal.innerHTML = `
+         <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h3 class="modal-title text-success" id="updateTaskModalLabel"><span class="text-danger">Project =></span> ${taskListValues[obj.id][0]}</h3>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body" id='modal-update'>
+                  <form id="updateTaskForm" name="updateTaskForm">
+                      <div class="form-group">
+                      <label for="updateTaskTitle">Title</label>
+                      <input type="text" class="form-control" id="updateTaskTitle" value="${taskListValues[obj.id][1]}">
+                      </div>
+                      <div class="form-group">
+                      <label for="updateTaskDesc">Description</label>
+                      <input type="text" class="form-control" id="updateTaskDesc" value="${taskListValues[obj.id][2]}">
+                      </div>
+                      <div class="form-group">
+                        <label for="updateTaskPriority">Priority</label>
+                        <select class="form-control" id="updateTaskPriority">
+                          <option>Low</option>
+                          <option>Normal</option>
+                          <option>High</option>
+                          <option>Urgent</option>
+                          <option>Important</option>
+                        </select>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="UpdateTaskDate">Date</label>
+                        <input class="form-control" type="date" value="${taskListValues[obj.id][5]}" id="UpdateTaskDate">
+                      </div>
+
+                      <div class="form-group">
+                        <label for="updateTaskNotes">Notes</label>
+                        <textarea class="form-control" id="updateTaskNotes" rows="3" >${taskListValues[obj.id][4]}</textarea>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <input type="submit" class="btn btn-primary" name="updateTaskForm" value="Update">
+                      </div>
+                    </form> 
+                  </div>
+                </div>
+              </div>`;
+          document.getElementById('taskListOperations').appendChild(updateTaskModal);
+        });
+      });
+    });
+  });
 }
 
 let times = 0;
@@ -87,128 +209,8 @@ const executeOddClick = () => {
     document.getElementById('fa-angle').style.cssText = 'transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;';
     const addTaskDiv = document.getElementById('right-body');
     addTaskDiv.style.cssText = 'display:block;';
-    const parentDiv = document.getElementById('collapseExample');
-    const projectListDiv = document.createElement('div');
-    projectListDiv.setAttribute('id', 'projectList');
-    parentDiv.appendChild(projectListDiv);
-    projectListDisplay.forEach((obj) => {
-      const projectListElem = document.createElement('p');
-      projectListElem.setAttribute('id', 'projectId');
-      projectListElem.addEventListener('click', () => {
-        projectTitle = obj[0];
-      });
-      projectListElem.innerHTML = `${obj[0]}`;
-      projectListElem.style.backgroundColor = `${obj[1]}`;
-      projectListElem.classList.add('projectListELemParagraph');
-      projectListDiv.appendChild(projectListElem);
-    });
+    dummy()
 
-    const allProjectIds = document.querySelectorAll('#projectId');
-    allProjectIds.forEach((obj) => {
-      obj.addEventListener('click', () => {
-        projectTitle = obj.innerHTML;
-        const projectTitleDivForTask = document.createElement('div');
-        projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
-        const projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
-        projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
-        projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
-        document.querySelector('.taskContainer').style.display = 'flex';
-        const taskListValues = addAndDisplayTaskArray.displayTasks();
-        taskListValues.forEach((obj, idx) => {
-          if (obj[0] === projectTitle) {
-            const taskList = document.createElement('div');
-            taskList.setAttribute('id', 'taskList');
-            taskList.setAttribute('class', 'taskList');
-            taskList.classList.remove('taskList');
-            taskList.innerHTML = `
-              <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
-              <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
-              <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
-              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
-              <div id="taskListOperations" class='d-flex flex-row'>
-              <div>
-              <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
-              
-              <button type="button" id="${idx}" class="update" data-toggle="modal" data-target="#updateTaskModal">
-                <i class="fas fa-pencil-alt"></i>
-              </button>
-              </div>
-              </div>
-           <br> `;
-            projectTitleDivForTaskParentDiv.appendChild(taskList);
-          }
-        });
-
-        const deleteTask = document.querySelectorAll('.delete');
-        deleteTask.forEach((obj) => {
-          obj.addEventListener('click', () => {
-            taskListValues.splice(obj.id, 1);
-            localStorage.setItem('todo', JSON.stringify(taskListValues));
-          });
-        });
-        const updateTask = document.querySelectorAll('.update');
-        updateTask.forEach((obj) => {
-          obj.addEventListener('click', () => {
-            const updateTaskModal = document.createElement('div');
-            updateTaskModal.setAttribute('class', 'modal fade');
-            updateTaskModal.setAttribute('id', 'updateTaskModal');
-            updateTaskModal.setAttribute('tabindex', '-1');
-            updateTaskModal.setAttribute('role', 'dialog');
-            updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
-            updateTaskModal.setAttribute('aria-hidden', 'true');
-            updateTaskModal.innerHTML = `
-           <div class="modal-dialog" role="document">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h3 class="modal-title text-success" id="updateTaskModalLabel"><span class="text-danger">Project =></span> ${taskListValues[obj.id][0]}</h3>
-                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                      </button>
-                    </div>
-                    <div class="modal-body" id='modal-update'>
-                    <form id="updateTaskForm" name="updateTaskForm">
-                        <div class="form-group">
-                        <label for="updateTaskTitle">Title</label>
-                        <input type="text" class="form-control" id="updateTaskTitle" value="${taskListValues[obj.id][1]}">
-                        </div>
-                        <div class="form-group">
-                        <label for="updateTaskDesc">Description</label>
-                        <input type="text" class="form-control" id="updateTaskDesc" value="${taskListValues[obj.id][2]}">
-                        </div>
-                        <div class="form-group">
-                          <label for="updateTaskPriority">Priority</label>
-                          <select class="form-control" id="updateTaskPriority">
-                            <option>Low</option>
-                            <option>Normal</option>
-                            <option>High</option>
-                            <option>Urgent</option>
-                            <option>Important</option>
-                          </select>
-                        </div>
-
-                        <div class="form-group">
-                          <label for="UpdateTaskDate">Date</label>
-                          <input class="form-control" type="date" value="${taskListValues[obj.id][5]}" id="UpdateTaskDate">
-                        </div>
-
-                        <div class="form-group">
-                          <label for="updateTaskNotes">Notes</label>
-                          <textarea class="form-control" id="updateTaskNotes" rows="3" >${taskListValues[obj.id][4]}</textarea>
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                          <input type="submit" class="btn btn-primary" name="updateTaskForm" value="Update">
-                        </div>
-                      </form> 
-                    </div>
-                  </div>
-                </div>`;
-            document.getElementById('taskListOperations').appendChild(updateTaskModal);
-          });
-        });
-      });
-    });
 
     document.getElementById('taskAddC').addEventListener('click', () => {
       document.getElementById('task-form-id').classList.remove('task-form-class');
@@ -216,14 +218,28 @@ const executeOddClick = () => {
   }
 };
 
+addProjectForm.onsubmit = (e) => {
+  e.preventDefault();
+  const projectTitle = document.getElementById('project-form-id').value;
+  const projectColor = colorModule.dropObj[0];
+  newProject.projects(projectTitle, projectColor);
+  newProjectArray = newProject.addProject();
+  addAndDisplayProjectArray = addAndDisplay;
+  projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
+  document.getElementById('projectList').remove();
+  document.getElementById('addProjectForm').reset();
+  $('#projectModal').modal('hide');
+  dummy();
+};
+
 document.getElementById('dropDown').addEventListener('click', executeOddClick);
 document.getElementById('dropDown').addEventListener('click', () => {
   const projectsForTasks = document.querySelectorAll('.projectListELemParagraph');
 });
 
-document.getElementById('button-dropdown').addEventListener('click', () => {
-  document.getElementById('dropdown-section').classList.toggle('dropdown-section');
-});
+// document.getElementById('button-dropdown').addEventListener('click', () => {
+//   document.getElementById('dropdown-section').classList.toggle('dropdown-section');
+// });
 
 let timesClicked = 0;
 document.getElementById('dropDown').addEventListener('click', () => {
@@ -236,5 +252,12 @@ document.getElementById('dropDown').addEventListener('click', () => {
     removeTask.style.cssText = 'display:none;';
   }
 });
+
+const thereIsSession = () => {
+  if (sessionStorage) {
+    console.log(sessionStorage)
+  }
+}
+thereIsSession()
 /* eslint-enable no-unused-vars, prefer-destructuring */
 /* eslint-enable no-undef, import/no-extraneous-dependencies */

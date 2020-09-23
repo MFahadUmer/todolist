@@ -161,10 +161,6 @@ select {
   /* stylelint-enable */
 }
 
-.dropdown-section {
-  display: none;
-}
-
 .projectListELemParagraph {
   padding: 10px 0;
   border-radius: 10px;
