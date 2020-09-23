@@ -249,7 +249,8 @@ select {
   cursor: pointer;
 }
 
-.add-id:hover, .add-id:focus {
+.add-id:hover,
+.add-id:focus {
   outline: none;
   border: none;
 }
