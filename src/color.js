@@ -1,3 +1,5 @@
+/* eslint-disable func-names */
+
 const colorModule = (() => {
   const dropObj = ['black'];
   function defaultColor() {
@@ -10,7 +12,7 @@ const colorModule = (() => {
   const buttons = document.querySelectorAll('[id^=addnew]');
   const buttonsCount = buttons.length;
   for (let i = 0; i < buttonsCount; i += 1) {
-    buttons[i].onclick = function (e) {// eslint-disable-line no-unused-vars
+    buttons[i].onclick = function (e) { // eslint-disable-line no-unused-vars
       dropObj[0] = this.value;
       defaultColor();
     };
@@ -20,3 +22,4 @@ const colorModule = (() => {
   };
 })();
 export default colorModule;
+/* eslint-enable func-names */

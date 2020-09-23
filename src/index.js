@@ -72,6 +72,7 @@ addProjectForm.onsubmit = (e) => {
   newProjectArray = newProject.addProject();
   addAndDisplayProjectArray = addAndDisplay;
   projectlist2 = addAndDisplayProjectArray.addDisplayproject(newProjectArray);
+  window.location.reload();
 };
 const projectListDisplay = addAndDisplay.displayProject();
 if (projectListDisplay.length === 0) {
