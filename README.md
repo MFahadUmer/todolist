@@ -14,9 +14,9 @@
 
 ## Description
 
-To do list is an app that enables user to track down, organize and implement tasks and projects. It is similar to <a href="https://en.todoist.com/">to do list</a>. 
+To do list is an app that enables user to track down, organize and implement tasks and projects. It is similar to <a href="https://en.todoist.com/">Todolist</a>. 
 
-The project was built using webpack to bundle javascript files into single file, the main js file. Files in the source folder represent individual module that symbolize a particular functionality. The ‘todos’ are objects that are dynamically created, we used factory functions and constructors to generate them.
+The project was built using webpack to bundle javascript files into single file, the main js file. Files in the source folder represent individual module that symbolize a particular functionality. The ‘todos’ are objects that are dynamically created, and we used factory functions and constructors to generate them.
 
 ## Live version
 
@@ -24,7 +24,7 @@ Heres a live <a href="https://raw.githack.com/MFahadUmer/todolist/feature/dist/i
 
 ## Features
 
-In this project, the following actions were done;
+In this project, the following features were done;
 
 ### Functionalities added
 - Ability to create projects.
