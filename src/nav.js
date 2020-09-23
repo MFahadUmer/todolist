@@ -10,12 +10,12 @@ const navModule = (() => {
     const rightDiv = document.createElement('div');
     rightDiv.setAttribute('id', 'right-container');
     const fastTask = document.createElement('div');
-    fastTask.innerHTML = `<a href='#' class='plus' id='plus'>+</a>`;
+    fastTask.innerHTML = '<a href=\'#\' class=\'plus\' id=\'plus\'>+</a>';
     const bell = document.createElement('div');
     bell.setAttribute('class', 'bell');
-    bell.innerHTML = `<a href='#' class='bell-item'>notification</a></i>`;
+    bell.innerHTML = '<a href=\'#\' class=\'bell-item\'>notification</a></i>';
     const setting = document.createElement('div');
-    setting.innerHTML = `<a href='#' class='setting-item'>setting</a></i>`;
+    setting.innerHTML = '<a href=\'#\' class=\'setting-item\'>setting</a></i>';
     nav.appendChild(leftDiv);
     nav.appendChild(rightDiv);
     leftDiv.appendChild(elem);

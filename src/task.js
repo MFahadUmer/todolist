@@ -6,9 +6,7 @@ const tasks = (() => {
     this.priority = priority;
     this.notes = notes;
     this.duedate = duedate;
-    this.addTasks = function () {
-      return [project, title, description, priority, notes, duedate];
-    };
+    this.addTasks = () => [project, title, description, priority, notes, duedate];
   }
   return {
     toDoItems,
