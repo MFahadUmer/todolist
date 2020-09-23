@@ -28,7 +28,7 @@ const addAndDisplay = (() => {
   };
 
   const displayProject = () => {
-    const projectslist = document.getElementById('projectList');
+    const projectslist = document.getElementById('projectList');// eslint-disable-line no-unused-vars
     return myProjectList;
   };
 

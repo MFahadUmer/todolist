@@ -1,5 +1,5 @@
 const updateModal = (() => {
-  const addModalDiv = document.getElementById('addModalDiv');
+  const addModalDiv = document.getElementById('addModalDiv');// eslint-disable-line no-unused-vars
   const updateTaskModal = document.createElement('div');
   updateTaskModal.setAttribute('class', 'modal fade');
   updateTaskModal.setAttribute('id', 'updateTaskModal');
