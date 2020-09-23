@@ -1,13 +1,13 @@
 const updateModal = (() => {
-    const addModalDiv = document.getElementById('addModalDiv');
-    const updateTaskModal = document.createElement('div');
-    updateTaskModal.setAttribute('class', 'modal fade');
-    updateTaskModal.setAttribute('id', 'updateTaskModal');
-    updateTaskModal.setAttribute('tabindex', '-1');
-    updateTaskModal.setAttribute('role', 'dialog');
-    updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
-    updateTaskModal.setAttribute('aria-hidden', 'true');
-    updateTaskModal.innerHTML = `
+  const addModalDiv = document.getElementById('addModalDiv');
+  const updateTaskModal = document.createElement('div');
+  updateTaskModal.setAttribute('class', 'modal fade');
+  updateTaskModal.setAttribute('id', 'updateTaskModal');
+  updateTaskModal.setAttribute('tabindex', '-1');
+  updateTaskModal.setAttribute('role', 'dialog');
+  updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
+  updateTaskModal.setAttribute('aria-hidden', 'true');
+  updateTaskModal.innerHTML = `
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">

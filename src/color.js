@@ -7,16 +7,16 @@ const colorModule = (() => {
     styleContent.textContent = `${dropObj[0]}`;
   }
   defaultColor();
-  var buttons = document.querySelectorAll('[id^=addnew]');
-  var buttonsCount = buttons.length;
-  for (var i = 0; i < buttonsCount; i += 1) {
+  const buttons = document.querySelectorAll('[id^=addnew]');
+  const buttonsCount = buttons.length;
+  for (let i = 0; i < buttonsCount; i += 1) {
     buttons[i].onclick = function (e) {
-      dropObj[0] = this.value
+      dropObj[0] = this.value;
       defaultColor();
     };
   }
   return {
-    dropObj
-  }
+    dropObj,
+  };
 })();
 export default colorModule;

@@ -34,7 +34,7 @@ const bodyModule = (() => {
     right.appendChild(task);
     toDoBody.appendChild(left);
     toDoBody.appendChild(right);
-    return toDoBody
+    return toDoBody;
   };
   document.querySelector('.body-container').appendChild(createBody());
 })();

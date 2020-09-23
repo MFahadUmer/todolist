@@ -15,7 +15,7 @@ const addAndDisplay = (() => {
   const addtasks = (tasks) => {
     myToDoList.push(tasks);
     localStorage.setItem('todo', JSON.stringify(myToDoList));
-  }
+  };
 
   const displayTasks = () => {
     return myToDoList;
@@ -25,15 +25,15 @@ const addAndDisplay = (() => {
     myProjectList.push(project);
     localStorage.setItem('project', JSON.stringify(myProjectList));
     return myProjectList;
-  }
+  };
 
   const displayProject = () => {
-    let projectslist = document.getElementById("projectList");
+    const projectslist = document.getElementById('projectList');
     return myProjectList;
   };
 
   return {
     addtasks, displayTasks, addDisplayproject, displayProject
-  }
+  };
 })();
 export default addAndDisplay;
