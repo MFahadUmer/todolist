@@ -1,9 +1,10 @@
 const colorModule = (() => {
-  let dropObj = ['black']
+  const dropObj = ['black'];
   function defaultColor() {
     const styleColor = document.getElementById('colorChange');
     styleColor.style.backgroundColor = `${dropObj[0]}`;
-    var styleContent = document.getElementById('colorName').textContent = `${dropObj[0]}`;
+    const styleContent = document.getElementById('colorName');
+    styleContent.textContent = `${dropObj[0]}`;
   }
   defaultColor();
   var buttons = document.querySelectorAll('[id^=addnew]');
