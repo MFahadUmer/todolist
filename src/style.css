@@ -3,6 +3,7 @@
   width: 100vw;
   padding: 0 2em;
 }
+
 .nav-container {
   display: flex;
   justify-content: space-between;
@@ -155,7 +156,9 @@
 }
 
 select {
+   /* stylelint-disable */
   font-family: fontAwesome;
+  /* stylelint-enable */
 }
 
 .dropdown-section {
