@@ -2,7 +2,7 @@
 
 const colorModule = (() => {
   const dropObj = ['black'];
-  function defaultColor() {
+  const defaultColor = () => {
     const styleColor = document.getElementById('colorChange');
     styleColor.style.backgroundColor = `${dropObj[0]}`;
     const styleContent = document.getElementById('colorName');
