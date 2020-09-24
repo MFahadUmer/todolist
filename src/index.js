@@ -59,27 +59,26 @@ const createTask = (taskListValues) => {
   mainDiv.setAttribute('id', 'parentDivForTask');
   taskListValues.forEach((obj, idx) => {
     if (obj[0] === projectTitle) {
-      createTask(obj);
       const taskList = document.createElement('div');
       taskList.setAttribute('id', 'taskList');
       taskList.setAttribute('class', 'taskList');
       taskList.classList.remove('taskList');
       taskList.innerHTML = `
-    <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
-    <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
-    <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
-    <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
-    <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
-    <div id="taskListOperations" class='d-flex flex-row'>
-    <div>
-    <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
-    
-    <button type="button" id='${idx}' class="update" data-toggle="modal" data-target="#updateTaskModal">
-      <i class="fas fa-pencil-alt"></i>
-    </button>
-    </div>
-    </div>
-     <br> `;
+              <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
+              <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
+              <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
+              <div><span class="taskcategory">Notes:</span> <span class="taskname">${obj[4]}</span></div>
+              <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
+              <div id="taskListOperations" class='d-flex flex-row'>
+              <div>
+              <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
+              
+              <button type="button" id="${idx}" class="update" data-toggle="modal" data-target="#updateTaskModal">
+                <i class="fas fa-pencil-alt"></i>
+              </button>
+              </div>
+              </div>
+           <br> `;
       document.getElementById('tasksId').appendChild(mainDiv);
       mainDiv.appendChild(taskList);
     }
@@ -87,21 +86,15 @@ const createTask = (taskListValues) => {
   const deleteTask = document.querySelectorAll('.delete');
   deleteTask.forEach((obj) => {
     obj.addEventListener('click', () => {
-      console.log(obj.id)
-      delete taskListValues[obj.id]
-      var filtered = taskListValues.filter(function (el) {
-        return el != null;
-      });
-      taskListValues = filtered
       const taskList = document.getElementById('parentDivForTask');
+      taskListValues.splice(obj.id, 1);
+      localStorage.setItem('todo', JSON.stringify(taskListValues));
       if (taskList !== null) {
         taskList.remove();
       }
-      localStorage.setItem('todo', JSON.stringify(taskListValues));
       createTask(taskListValues);
     });
   });
-
   const updateTask = document.querySelectorAll('.update');
   updateTask.forEach((obj) => {
     obj.addEventListener('click', () => {
