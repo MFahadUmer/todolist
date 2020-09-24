@@ -1,0 +1,255 @@
+.nav {
+  background-color: blue;
+  width: 100vw;
+  padding: 0 2em;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+}
+
+.body-container {
+  margin: 0 10px;
+  padding: 10px;
+}
+
+.projectStyles {
+  color: black;
+}
+
+.body-class {
+  display: flex;
+}
+
+.left-body {
+  width: 30%;
+  background-color: white;
+}
+
+.right-body {
+  width: 70%;
+}
+
+#left-container {
+  width: 30%;
+}
+
+.nav h1 {
+  color: white;
+  font-size: 20px;
+  margin: auto;
+  padding: 0.4em;
+}
+
+.project-section {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 25px;
+}
+
+.addProject {
+  color: blue;
+  padding-right: 30px;
+}
+
+#right-container {
+  display: flex;
+  flex-direction: row;
+  width: 70%;
+  justify-content: flex-end;
+  margin: auto;
+}
+
+.bell-item,
+.setting-item {
+  color: white;
+  text-decoration: none;
+  padding-right: 1em;
+}
+
+.plus {
+  color: white;
+  text-decoration: none;
+  padding-right: 1em;
+}
+
+.bell-item:hover,
+.plus:hover,
+.setting-item:hover {
+  text-decoration: none;
+}
+
+.fa-angle-right {
+  padding-top: 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.fa-angel {
+  padding-top: 10px;
+}
+
+.addProjectIcon {
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  border: none;
+}
+
+.addProjectIcon:hover {
+  background-color: aqua;
+  outline: none;
+}
+
+.addProjectIcon:focus {
+  background-color: blue;
+  outline: none;
+}
+
+.project-p {
+  font-weight: bold;
+  font-size: 1.1em;
+  padding-top: 7px;
+}
+
+.black {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: black;
+  margin-right: 5px;
+}
+
+.red {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: red;
+  margin-right: 5px;
+}
+
+.colorChange {
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+.green {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: green;
+  margin-right: 5px;
+}
+
+.blue {
+  height: 10px;
+  width: 10px;
+  border-radius: 50%;
+  background-color: blue;
+  margin-right: 5px;
+}
+
+select {
+   /* stylelint-disable */
+  font-family: fontAwesome;
+  /* stylelint-enable */
+}
+
+.projectListELemParagraph {
+  padding: 10px 0;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  font-size: 15px;
+  text-align: center;
+}
+
+.dropdownbuttonforborder:hover:first-child {
+  border: none;
+}
+
+.dropDownDivButtons:hover {
+  background-color: burlywood;
+}
+
+.task-form-class {
+  display: none;
+}
+
+.taskcategory {
+  font-weight: bold;
+  font-size: 15px;
+  color: black;
+}
+
+.taskList {
+  display: none;
+}
+
+.taskname {
+  font-size: 15px;
+  color: blue;
+}
+
+.taskContainer {
+  display: none;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  height: 100px;
+}
+
+.add-task-text {
+  padding-top: 12px;
+}
+
+.add-class {
+  border: none;
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  background-color: aqua;
+}
+
+.tasksClass,
+#task-form-id {
+  padding: 1em;
+}
+
+.tasksClass h2 {
+  font-size: 20px;
+}
+
+.fa-trash,
+.fa-trash:hover,
+.fa-pencil-alt,
+.fa-pencil-alt:hover {
+  cursor: pointer;
+}
+
+.update {
+  border: none;
+  background-color: white;
+}
+
+.delete {
+  background-color: white;
+  border: none;
+}
+
+#projectId {
+  cursor: pointer;
+}
+
+.add-id:hover,
+.add-id:focus {
+  outline: none;
+  border: none;
+}
