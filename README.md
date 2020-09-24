@@ -20,7 +20,7 @@ The project was built using webpack to bundle javascript files into single file,
 
 ## Live version
 
-Heres a live <a href="https://raw.githack.com/MFahadUmer/todolist/feature/dist/index.html">link</a>
+Heres a live <a href="https://rawcdn.githack.com/MFahadUmer/todolist/1c848e805fe2afcba45dee0deffa23b33f7e9018/dist/index.html">link</a>
 
 ## Features
 
