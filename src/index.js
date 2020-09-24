@@ -54,13 +54,17 @@ if (projectListDisplay.length === 0) {
   defaultTask();
 }
 
-const createTask = (obj) => {
-  let projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
-  const taskList = document.createElement('div');
-  taskList.setAttribute('id', 'taskList');
-  taskList.setAttribute('class', 'taskList');
-  taskList.classList.remove('taskList');
-  taskList.innerHTML = `
+const createTask = (taskListValues) => {
+  const mainDiv = document.createElement('div');
+  mainDiv.setAttribute('id', 'parentDivForTask');
+  taskListValues.forEach((obj, idx) => {
+    if (obj[0] === projectTitle) {
+      createTask(obj);
+      const taskList = document.createElement('div');
+      taskList.setAttribute('id', 'taskList');
+      taskList.setAttribute('class', 'taskList');
+      taskList.classList.remove('taskList');
+      taskList.innerHTML = `
     <div><span class="taskcategory">Task:</span> <span class="taskname">${obj[1]}</span></div>
     <div><span class="taskcategory">Description:</span> <span class="taskname">${obj[2]}</span></div>
     <div><span class="taskcategory">Priority:</span> <span class="taskname">${obj[3]}</span></div>
@@ -68,68 +72,42 @@ const createTask = (obj) => {
     <div><span class="taskcategory">Due Date:</span> <span class="taskname">${obj[5]}</span></div>
     <div id="taskListOperations" class='d-flex flex-row'>
     <div>
-    <button class="delete" id=''><i class="fas fa-trash"></i></button>
+    <button class="delete" id='${idx}'><i class="fas fa-trash"></i></button>
     
-    <button type="button" id='' class="update" data-toggle="modal" data-target="#updateTaskModal">
+    <button type="button" id='${idx}' class="update" data-toggle="modal" data-target="#updateTaskModal">
       <i class="fas fa-pencil-alt"></i>
     </button>
     </div>
     </div>
      <br> `;
-  projectTitleDivForTaskParentDiv.appendChild(taskList);
-}
-
-const displayCreateProject = () => {
-  const parentDiv = document.getElementById('collapseExample');
-  const projectListDiv = document.createElement('div');
-  projectListDiv.setAttribute('id', 'projectList');
-  parentDiv.appendChild(projectListDiv);
-  projectListDisplay.forEach((obj) => {
-    const projectListElem = document.createElement('p');
-    projectListElem.setAttribute('id', 'projectId');
-    projectListElem.addEventListener('click', () => {
-      projectTitle = obj[0];
-    });
-    projectListElem.innerHTML = `${obj[0]}`;
-    projectListElem.style.backgroundColor = `${obj[1]}`;
-    projectListElem.classList.add('projectListELemParagraph');
-    projectListDiv.appendChild(projectListElem);
+      document.getElementById('tasksId').appendChild(mainDiv);
+      mainDiv.appendChild(taskList);
+    }
   });
-  const allProjectIds = document.querySelectorAll('#projectId');
-  allProjectIds.forEach((obj) => {
+  const deleteTask = document.querySelectorAll('.delete');
+  deleteTask.forEach((obj) => {
     obj.addEventListener('click', () => {
-      projectTitle = obj.innerHTML;
-      const projectTitleDivForTask = document.createElement('div');
-      projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
-      const projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
-      projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
-      projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
-      document.querySelector('.taskContainer').style.display = 'flex';
-      const taskListValues = addAndDisplayTaskArray.displayTasks();
-      taskListValues.forEach((obj, idx) => {
-        if (obj[0] === projectTitle) {
-          createTask(obj);
-        }
-      })
+      taskListValues.splice(obj.id, 1);
+      const taskList = document.getElementById('parentDivForTask');
+      if (taskList !== null) {
+        taskList.remove();
+      }
+      localStorage.setItem('todo', JSON.stringify(taskListValues));
+      createTask(taskListValues);
+    });
+  });
 
-      const deleteTask = document.querySelectorAll('.delete');
-      deleteTask.forEach((obj) => {
-        obj.addEventListener('click', () => {
-          taskListValues.splice(obj.id, 1);
-          localStorage.setItem('todo', JSON.stringify(taskListValues));
-        });
-      });
-      const updateTask = document.querySelectorAll('.update');
-      updateTask.forEach((obj) => {
-        obj.addEventListener('click', () => {
-          const updateTaskModal = document.createElement('div');
-          updateTaskModal.setAttribute('class', 'modal fade');
-          updateTaskModal.setAttribute('id', 'updateTaskModal');
-          updateTaskModal.setAttribute('tabindex', '-1');
-          updateTaskModal.setAttribute('role', 'dialog');
-          updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
-          updateTaskModal.setAttribute('aria-hidden', 'true');
-          updateTaskModal.innerHTML = `
+  const updateTask = document.querySelectorAll('.update');
+  updateTask.forEach((obj) => {
+    obj.addEventListener('click', () => {
+      const updateTaskModal = document.createElement('div');
+      updateTaskModal.setAttribute('class', 'modal fade');
+      updateTaskModal.setAttribute('id', 'updateTaskModal');
+      updateTaskModal.setAttribute('tabindex', '-1');
+      updateTaskModal.setAttribute('role', 'dialog');
+      updateTaskModal.setAttribute('aria-labelledby', 'updateTaskModalLabel');
+      updateTaskModal.setAttribute('aria-hidden', 'true');
+      updateTaskModal.innerHTML = `
          <div class="modal-dialog" role="document">
                 <div class="modal-content">
                   <div class="modal-header">
@@ -176,12 +154,42 @@ const displayCreateProject = () => {
                   </div>
                 </div>
               </div>`;
-          document.getElementById('taskListOperations').appendChild(updateTaskModal);
-        });
-      });
+      document.getElementById('taskListOperations').appendChild(updateTaskModal);
     });
   });
-}
+};
+
+const displayCreateProject = () => {
+  const parentDiv = document.getElementById('collapseExample');
+  const projectListDiv = document.createElement('div');
+  projectListDiv.setAttribute('id', 'projectList');
+  parentDiv.appendChild(projectListDiv);
+  projectListDisplay.forEach((obj) => {
+    const projectListElem = document.createElement('p');
+    projectListElem.setAttribute('id', 'projectId');
+    projectListElem.addEventListener('click', () => {
+      projectTitle = obj[0];
+    });
+    projectListElem.innerHTML = `${obj[0]}`;
+    projectListElem.style.backgroundColor = `${obj[1]}`;
+    projectListElem.classList.add('projectListELemParagraph');
+    projectListDiv.appendChild(projectListElem);
+  });
+  const allProjectIds = document.querySelectorAll('#projectId');
+  allProjectIds.forEach((obj) => {
+    obj.addEventListener('click', () => {
+      projectTitle = obj.innerHTML;
+      const projectTitleDivForTask = document.createElement('div');
+      projectTitleDivForTask.setAttribute('id', 'projectTitleDivForTask');
+      const projectTitleDivForTaskParentDiv = document.getElementById('tasksId');
+      projectTitleDivForTaskParentDiv.innerHTML = `<h2> ${projectTitle} </h2>`;
+      projectTitleDivForTaskParentDiv.appendChild(projectTitleDivForTask);
+      document.querySelector('.taskContainer').style.display = 'flex';
+      const taskListValues = addAndDisplayTaskArray.displayTasks();
+      createTask(taskListValues);
+    });
+  });
+};
 
 let times = 0;
 const executeOddClick = () => {
@@ -190,7 +198,7 @@ const executeOddClick = () => {
     document.getElementById('fa-angle').style.cssText = 'transition: all 0.25s; transitionDuration = 0.25s; transform: rotate(90deg); margin-top: 10px;';
     const addTaskDiv = document.getElementById('right-body');
     addTaskDiv.style.cssText = 'display:block;';
-    displayCreateProject()
+    displayCreateProject();
     document.getElementById('taskAddC').addEventListener('click', () => {
       document.getElementById('task-form-id').classList.remove('task-form-class');
     });
@@ -223,11 +231,13 @@ taskForm.onsubmit = (e) => {
   newTask.toDoItems(projectTitle, taskTitle, taskDesc, taskPriority, taskNotes, taskDate);
   const newTaskArray = newTask.addTasks();
   addAndDisplayTaskArray.addtasks(newTaskArray);
-  addAndDisplayTaskArray.displayTasks();
+  const displayTask = addAndDisplayTaskArray.displayTasks();
   document.getElementById('task-form-id').classList.add('task-form-class');
-  document.getElementById('taskList').remove()
-  createTask()
-
+  const taskList = document.getElementById('parentDivForTask');
+  if (taskList !== null) {
+    taskList.remove();
+  }
+  createTask(displayTask);
 };
 
 document.getElementById('dropDown').addEventListener('click', executeOddClick);
