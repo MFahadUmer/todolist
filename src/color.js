@@ -7,7 +7,7 @@ const colorModule = (() => {
     styleColor.style.backgroundColor = `${dropObj[0]}`;
     const styleContent = document.getElementById('colorName');
     styleContent.textContent = `${dropObj[0]}`;
-  }
+  };
   defaultColor();
   const buttons = document.querySelectorAll('[id^=addnew]');
   const buttonsCount = buttons.length;
