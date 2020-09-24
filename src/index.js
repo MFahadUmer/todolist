@@ -87,7 +87,12 @@ const createTask = (taskListValues) => {
   const deleteTask = document.querySelectorAll('.delete');
   deleteTask.forEach((obj) => {
     obj.addEventListener('click', () => {
-      taskListValues.splice(obj.id, 1);
+      console.log(obj.id)
+      delete taskListValues[obj.id]
+      var filtered = taskListValues.filter(function (el) {
+        return el != null;
+      });
+      taskListValues = filtered
       const taskList = document.getElementById('parentDivForTask');
       if (taskList !== null) {
         taskList.remove();
