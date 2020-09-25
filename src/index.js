@@ -58,7 +58,7 @@ const createTask = (taskListValues) => {
   const mainDiv = document.createElement('div');
   mainDiv.setAttribute('id', 'parentDivForTask');
   taskListValues.forEach((obj, idx) => {
-    if (obj[0] === projectTitle) {
+    if (obj[0] === projectTitle && obj[1] !== null) {
       const taskList = document.createElement('div');
       taskList.setAttribute('id', 'taskList');
       taskList.setAttribute('class', 'taskList');
